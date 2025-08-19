@@ -4,10 +4,14 @@
 # Data Ingestion
 data:
   input_dir: "data/input"
-  processed_dir: "data/processed"
+
+output:
+  base_dir: "data/builds"
+  version: "knowledge-consolidation" # or a specific name like "latest", "v1", etc.
 
 # Graph Construction
 graph:
+  enable_consolidation: false
   chunking:
     strategy: "fixed_size"
     size: 512

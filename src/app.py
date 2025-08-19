@@ -1,16 +1,29 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from src.logger import get_logger
+import os
 
 logger = get_logger(__name__)
 
-def create_app(agents, graph_path):
+def create_app(agents, graph_paths):
     logger.info("Creating Flask app...")
     app = Flask(__name__, template_folder='../templates')
 
     @app.route('/')
     def index():
         logger.info("Request received for index page.")
-        return render_template('index.html', topics=list(agents.keys()), graph_path=graph_path)
+        return render_template('index.html', topics=list(agents.keys()))
+
+    @app.route('/graph/<graph_type>')
+    def graph(graph_type):
+        logger.info(f"Request received for {graph_type} graph visualization.")
+        graph_path = graph_paths.get(graph_type)
+        if not graph_path or not os.path.exists(graph_path):
+            logger.error(f"{graph_type} graph not found at path: {graph_path}")
+            return "Graph not found", 404
+        
+        graph_dir = os.path.dirname(graph_path)
+        graph_filename = os.path.basename(graph_path)
+        return send_from_directory(graph_dir, graph_filename)
 
     @app.route('/query', methods=['POST'])
     def query():

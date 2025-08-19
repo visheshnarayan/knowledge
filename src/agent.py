@@ -8,13 +8,14 @@ import random
 logger = get_logger(__name__)
 
 class Agent:
-    def __init__(self, subgraph, topic, model_name, embedding_model, embedding_tokenizer, similarity_threshold):
+    def __init__(self, subgraph, topic, model_name, embedding_model, embedding_tokenizer, similarity_threshold, search_sample_ratio):
         self.subgraph = subgraph
         self.topic = topic
         self.model_name = model_name
         self.embedding_model = embedding_model
         self.embedding_tokenizer = embedding_tokenizer
         self.similarity_threshold = similarity_threshold
+        self.search_sample_ratio = search_sample_ratio
         self.client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
         logger.info(f"Agent for topic '{self.topic}' initialized.")
 
@@ -68,7 +69,7 @@ class Agent:
         # Get neighbors of the topic node (all nodes in the cluster)
         neighbors = list(self.subgraph.neighbors(topic_node_id))
         
-        # Take a random 40% sample of the neighbors
+        # Take a random sample of the neighbors
         sample_size = int(len(neighbors) * self.search_sample_ratio)
         start_nodes = random.sample(neighbors, sample_size)
         logger.info(f"Starting similarity search from {len(start_nodes)} random nodes.")
@@ -98,3 +99,24 @@ class Agent:
                                 visited.add(neighbor_id)
 
         return "\n\n".join(context)
+
+    def get_state(self):
+        return {
+            'subgraph': self.subgraph,
+            'topic': self.topic,
+            'model_name': self.model_name,
+            'similarity_threshold': self.similarity_threshold,
+            'search_sample_ratio': self.search_sample_ratio
+        }
+
+    @classmethod
+    def from_state(cls, state, embedding_model, embedding_tokenizer):
+        return cls(
+            state['subgraph'],
+            state['topic'],
+            state['model_name'],
+            embedding_model,
+            embedding_tokenizer,
+            state['similarity_threshold'],
+            state['search_sample_ratio']
+        )

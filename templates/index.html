@@ -46,9 +46,17 @@
 </head>
 <body>
     <div id="graph-container">
-        <iframe src="{{ graph_path }}"></iframe>
+        <iframe id="graph-iframe" src="/graph/triplets"></iframe>
     </div>
     <div id="controls-container">
+        <h2>Graph Selection</h2>
+        <select id="graph-select">
+            <option value="triplets" selected>Triplets Graph</option>
+            <option value="cosine">Cosine Graph</option>
+        </select>
+
+        <hr style="width:100%; margin: 20px 0;">
+
         <h2>Query Agents</h2>
         <form id="query-form">
             <label for="topic-select">Select a Topic:</label>
@@ -68,6 +76,11 @@
     </div>
 
     <script>
+        document.getElementById('graph-select').addEventListener('change', function(event) {
+            const graphType = event.target.value;
+            document.getElementById('graph-iframe').src = `/graph/${graphType}`;
+        });
+
         document.getElementById('query-form').addEventListener('submit', function(event) {
             event.preventDefault();
 

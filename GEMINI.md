@@ -81,6 +81,18 @@ The project is still under development, and the following features are planned f
 
 ## Development Log
 
+**8/19/25**
+
+- **Topic Consolidation:** Implemented a new feature to automatically identify and merge redundant or related topics, leading to a more coherent graph structure.
+- **Build Versioning:** Added a build versioning system to manage different builds of the graphs and agents. This allows for creating timestamped builds for experiments while preserving stable builds.
+- **Bug Fixes & Stability:**
+    - Implemented a more granular state-loading mechanism to intelligently load graphs and agents, preventing unnecessary rebuilding.
+    - Resolved a `TypeError` caused by an incorrect number of arguments passed to the `Agent` constructor.
+    - Fixed a `TypeError` that occurred when saving the agent state by implementing a new method to only pickle serializable data.
+    - Corrected a "Not Found" error in the UI by ensuring the graph visualization files were served correctly.
+- **UI Enhancements:**
+    - Added a dropdown menu to the UI to allow toggling between the cosine and triplet graph visualizations.
+
 **8/18/25**
 
 - **Agent System:** Implemented a multi-agent system where specialized agents are created for each topic cluster in the knowledge graph. Each agent can be queried individually about its specific domain.
