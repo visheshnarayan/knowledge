@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Agents</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        #graph-container {
+            flex: 3;
+            height: 100%;
+        }
+        #controls-container {
+            flex: 1;
+            padding: 20px;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #query-form {
+            display: flex;
+            flex-direction: column;
+        }
+        select, textarea, button {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        #response-container {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="graph-container">
+        <iframe src="{{ graph_path }}"></iframe>
+    </div>
+    <div id="controls-container">
+        <h2>Query Agents</h2>
+        <form id="query-form">
+            <label for="topic-select">Select a Topic:</label>
+            <select id="topic-select" name="topic">
+                {% for topic in topics %}
+                    <option value="{{ topic }}">{{ topic }}</option>
+                {% endfor %}
+            </select>
+            <label for="question-input">Ask a Question:</label>
+            <textarea id="question-input" name="question" rows="5"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <h3>Response:</h3>
+        <div id="response-container">
+            <p>Select a topic and ask a question to see the agent's response here.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('query-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const topic = document.getElementById('topic-select').value;
+            const question = document.getElementById('question-input').value;
+            const responseContainer = document.getElementById('response-container');
+
+            responseContainer.innerHTML = '<p>Loading...</p>';
+
+            fetch('/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ topic, question })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    responseContainer.innerHTML = `<p><strong>Error:</strong> ${data.error}</p>`;
+                } else {
+                    responseContainer.innerHTML = `<p>${data.response}</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                responseContainer.innerHTML = '<p>An error occurred while fetching the response.</p>';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+
+# Configuration for the Knowledge Graph Builder
+
+# Data Ingestion
+data:
+  input_dir: "data/input"
+  processed_dir: "data/processed"
+
+# Graph Construction
+graph:
+  chunking:
+    strategy: "fixed_size"
+    size: 512
+    overlap: 50
+  embedding:
+    model: "bert-base-uncased"
+  similarity:
+    metric: "cosine"
+    threshold: 0.8
+  triplet_extraction:
+    model: "Babelscape/rebel-large"
+
+# Parent Model
+parent_model:
+  model: "deepseek/deepseek-r1-0528-qwen3-8b:2"
+
+agent_model:
+  model: "deepseek/deepseek-r1-0528-qwen3-8b:2"
+  search_sample_ratio: 0.4
+
+# TODO: replace with pinecone
+database:
+  uri: "bolt://localhost:7687"
+  user: "admin"
+  password: "password"
