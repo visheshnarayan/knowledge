@@ -4,14 +4,37 @@ import os
 
 logger = get_logger(__name__)
 
-def create_app(agents, graph_paths):
+def create_app(agents, graph_paths, initial_search_similarity): # Added initial_search_similarity
     logger.info("Creating Flask app...")
     app = Flask(__name__, template_folder='../templates')
 
     @app.route('/')
     def index():
         logger.info("Request received for index page.")
-        return render_template('index.html', topics=list(agents.keys()))
+        return render_template('index.html', topics=list(agents.keys()), initial_search_similarity=initial_search_similarity) # Pass initial_search_similarity
+
+    @app.route('/update_search_similarity', methods=['POST'])
+    def update_search_similarity():
+        data = request.get_json()
+        new_similarity = data.get('similarity')
+        
+        if new_similarity is None:
+            logger.error("Missing 'similarity' in update_search_similarity request.")
+            return jsonify({'error': 'Missing similarity value'}), 400
+        
+        try:
+            new_similarity = float(new_similarity)
+            if not (0.0 <= new_similarity <= 1.0):
+                raise ValueError("Similarity value must be between 0.0 and 1.0.")
+        except ValueError as e:
+            logger.error(f"Invalid similarity value: {new_similarity}. Error: {e}")
+            return jsonify({'error': f'Invalid similarity value: {e}'}), 400
+
+        for agent_name, agent_instance in agents.items():
+            agent_instance.search_similarity = new_similarity
+            logger.info(f"Updated search_similarity for agent '{agent_name}' to {new_similarity}.")
+        
+        return jsonify({'status': 'success', 'new_similarity': new_similarity})
 
     @app.route('/graph/<graph_type>')
     def graph(graph_type):
@@ -42,9 +65,9 @@ def create_app(agents, graph_paths):
             logger.error(f"Agent for topic '{topic}' not found.")
             return jsonify({'error': 'Agent for the selected topic not found'}), 404
 
-        response = agent.query(question)
+        response, sources = agent.query(question) # Unpack response and sources
         logger.info(f"Returning response from agent for topic: '{topic}'")
-        return jsonify({'response': response})
+        return jsonify({'response': response, 'sources': sources}) # Return both
 
     logger.info("Flask app created.")
     return app

@@ -23,7 +23,8 @@ class Runner:
         self.agent_model_config = self.config.get('agent_model', {})
         self.agent_model_name = self.agent_model_config.get('model')
         self.search_sample_ratio = self.agent_model_config.get('search_sample_ratio', 0.4)
-        self.enable_consolidation = self.config.get('graph', {}).get('enable_consolidation', True) # New line
+        self.enable_consolidation = self.config.get('graph', {}).get('enable_consolidation', True)
+        self.search_similarity = self.config.get('graph', {}).get('search_similarity', 0.6) # New line
         
         output_config = self.config.get('output', {})
         base_output_dir = output_config.get('base_dir', 'data/builds')
@@ -130,7 +131,7 @@ class Runner:
         # Start the Flask app
         start_time = time.time() # New line
         logger.info("Starting Flask app...")
-        app = create_app(agents, {"cosine": vis_cosine_path, "triplets": vis_triplets_path})
+        app = create_app(agents, {"cosine": vis_cosine_path, "triplets": vis_triplets_path}, self.search_similarity) # Pass self.search_similarity
         app.run(debug=True)
         end_time = time.time() # New line
         logger.info(f"Flask app startup call finished in {end_time - start_time:.2f} seconds.") # New line
@@ -160,8 +161,9 @@ class Runner:
                     self.agent_model_name,
                     self.graph_builder.embedding_model,
                     self.graph_builder.embedding_tokenizer,
-                    self.graph_builder.similarity_threshold,
-                    self.search_sample_ratio
+                    self.graph_builder.similarity_threshold, # Keep this for graph building, not agent search
+                    self.search_sample_ratio,
+                    self.search_similarity # New parameter
                 )
         logger.info(f"{len(agents)} agents created.")
         return agents

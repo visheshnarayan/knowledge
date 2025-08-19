@@ -12,7 +12,7 @@
             margin: 0;
         }
         #graph-container {
-            flex: 3;
+            flex: 2; /* Adjusted flex to make space for sources */
             height: 100%;
         }
         #controls-container {
@@ -21,6 +21,21 @@
             box-shadow: -2px 0 5px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
+        }
+        #sources-container { /* New style for sources pane */
+            flex: 1;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        #sources-content {
+            flex-grow: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
         }
         iframe {
             width: 100%;
@@ -57,6 +72,12 @@
 
         <hr style="width:100%; margin: 20px 0;">
 
+        <h2>Search Similarity</h2>
+        <label for="search-similarity-slider">Threshold: <span id="search-similarity-value">0.6</span></label>
+        <input type="range" id="search-similarity-slider" min="0.0" max="1.0" step="0.01" value="0.6">
+
+        <hr style="width:100%; margin: 20px 0;">
+
         <h2>Query Agents</h2>
         <form id="query-form">
             <label for="topic-select">Select a Topic:</label>
@@ -73,9 +94,56 @@
         <div id="response-container">
             <p>Select a topic and ask a question to see the agent's response here.</p>
         </div>
+        <button id="toggle-sources-button">Toggle Sources</button> <!-- New button -->
+    </div>
+    <div id="sources-container" style="display: none;"> <!-- New sources pane -->
+        <h2>Sources:</h2>
+        <div id="sources-content">
+            <p>Sources will appear here.</p>
+        </div>
     </div>
 
     <script>
+        // Get initial search similarity from Flask
+        const initialSearchSimilarity = {{ initial_search_similarity | tojson }};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchSimilaritySlider = document.getElementById('search-similarity-slider');
+            const searchSimilarityValue = document.getElementById('search-similarity-value');
+
+            // Initialize slider and value display
+            searchSimilaritySlider.value = initialSearchSimilarity;
+            searchSimilarityValue.textContent = parseFloat(initialSearchSimilarity).toFixed(2);
+
+            // Update value display when slider moves
+            searchSimilaritySlider.addEventListener('input', function() {
+                searchSimilarityValue.textContent = parseFloat(this.value).toFixed(2);
+            });
+
+            // Send new value to backend when slider change is complete
+            searchSimilaritySlider.addEventListener('change', function() {
+                const newSimilarity = parseFloat(this.value);
+                fetch('/update_search_similarity', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ similarity: newSimilarity })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Search similarity updated to:', data.new_similarity);
+                    } else {
+                        console.error('Failed to update search similarity:', data.error);
+                    }m
+                })
+                .catch(error => {
+                    console.error('Error updating search similarity:', error);
+                });
+            });
+        });
+
         document.getElementById('graph-select').addEventListener('change', function(event) {
             const graphType = event.target.value;
             document.getElementById('graph-iframe').src = `/graph/${graphType}`;
@@ -87,8 +155,10 @@
             const topic = document.getElementById('topic-select').value;
             const question = document.getElementById('question-input').value;
             const responseContainer = document.getElementById('response-container');
+            const sourcesContainer = document.getElementById('sources-content'); // Get sources content div
 
             responseContainer.innerHTML = '<p>Loading...</p>';
+            sourcesContainer.innerHTML = '<p>Loading sources...</p>'; // Clear and show loading for sources
 
             fetch('/query', {
                 method: 'POST',
@@ -101,14 +171,32 @@
             .then(data => {
                 if (data.error) {
                     responseContainer.innerHTML = `<p><strong>Error:</strong> ${data.error}</p>`;
+                    sourcesContainer.innerHTML = '<p>No sources available due to error.</p>';
                 } else {
                     responseContainer.innerHTML = `<p>${data.response}</p>`;
+                    // Display sources
+                    if (data.sources && data.sources.length > 0) {
+                        sourcesContainer.innerHTML = data.sources.map((source, index) => `<h4>Source ${index + 1}:</h4><p>${source}</p>`).join('<hr>');
+                    } else {
+                        sourcesContainer.innerHTML = '<p>No specific sources found for this query.</p>';
+                    }
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 responseContainer.innerHTML = '<p>An error occurred while fetching the response.</p>';
+                sourcesContainer.innerHTML = '<p>An error occurred while fetching sources.m</p>';
             });
+        });
+
+        // Toggle Sources Pane
+        document.getElementById('toggle-sources-button').addEventListener('click', function() {
+            const sourcesPane = document.getElementById('sources-container');
+            if (sourcesPane.style.display === 'none') {
+                sourcesPane.style.display = 'flex'; // Show as flex to maintain layout
+            } else {
+                sourcesPane.style.display = 'none'; // Hide
+            }
         });
     </script>
 </body>

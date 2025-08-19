@@ -21,6 +21,7 @@ graph:
   similarity:
     metric: "cosine"
     threshold: 0.8
+  search_similarity: 0.6 # New parameter for agent context search similarity
   triplet_extraction:
     model: "Babelscape/rebel-large"
 

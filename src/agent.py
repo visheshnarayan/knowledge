@@ -8,20 +8,23 @@ import random
 logger = get_logger(__name__)
 
 class Agent:
-    def __init__(self, subgraph, topic, model_name, embedding_model, embedding_tokenizer, similarity_threshold, search_sample_ratio):
+    def __init__(self, subgraph, topic, model_name, embedding_model, embedding_tokenizer, similarity_threshold, search_sample_ratio, search_similarity): # Added search_similarity
         self.subgraph = subgraph
         self.topic = topic
         self.model_name = model_name
         self.embedding_model = embedding_model
         self.embedding_tokenizer = embedding_tokenizer
-        self.similarity_threshold = similarity_threshold
+        self.similarity_threshold = similarity_threshold # This is for graph building, not agent search
         self.search_sample_ratio = search_sample_ratio
+        self.search_similarity = search_similarity # New attribute
         self.client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
         logger.info(f"Agent for topic '{self.topic}' initialized.")
 
     def query(self, question):
         logger.info(f"Querying agent for topic '{self.topic}'...")
-        context = self._similarity_search_context(question)
+        source_contents = self._similarity_search_context(question) # Get list of source contents
+        logger.info(f"Found {len(source_contents)} sources for topic '{self.topic}'.") # New line
+        context = "\n\n".join(source_contents) # Join for LLM context
         logger.debug(f"Built context for topic '{self.topic}':\n{context}")
 
         system_prompt = f"You are an expert on the topic of '{self.topic}'. You will be given a context and a question. Your task is to answer the question based on the provided context."
@@ -40,10 +43,10 @@ class Agent:
             response = completion.choices[0].message.content
             logger.info(f"Received response from LLM for topic '{self.topic}'.")
             logger.debug(f"Response for topic '{self.topic}':\n{response}")
-            return response
+            return response, source_contents # Return both response and source_contents
         except Exception as e:
             logger.error(f"Error during text generation for topic '{self.topic}': {e}")
-            return "Error: Could not generate text."
+            return "Error: Could not generate text.", [] # Return empty list for sources on error
 
     def _get_embedding(self, text):
         inputs = self.embedding_tokenizer(text, return_tensors="pt", truncation=True, padding=True)
@@ -73,6 +76,9 @@ class Agent:
         sample_size = int(len(neighbors) * self.search_sample_ratio)
         start_nodes = random.sample(neighbors, sample_size)
         logger.info(f"Starting similarity search from {len(start_nodes)} random nodes.")
+        for node_id in start_nodes:
+            node_data = self.subgraph.nodes[node_id]
+            logger.info(f"  Initial node: {node_id}, Type: {node_data.get('type')}, Content: {node_data.get('content', '')}") # Changed to info and full content
 
         stack = start_nodes.copy()
         visited = set(start_nodes)
@@ -81,6 +87,7 @@ class Agent:
         while stack:
             node_id = stack.pop()
             node_data = self.subgraph.nodes[node_id]
+            logger.debug(f"  Popped node: {node_id}, Type: {node_data.get('type')}") # New line
 
             if node_data.get('type') == 'chunk':
                 node_embedding = node_data.get('embedding')
@@ -88,7 +95,7 @@ class Agent:
                     similarity = cosine_similarity([question_embedding], [node_embedding])[0][0]
                     logger.debug(f"Similarity between question and node {node_id}: {similarity:.4f}")
 
-                    if similarity > self.similarity_threshold:
+                    if similarity > self.search_similarity: # Changed to search_similarity
                         logger.info(f"Node {node_id} passed similarity threshold. Adding to context.")
                         context.append(node_data.get('content', ''))
                         
@@ -97,8 +104,14 @@ class Agent:
                             if neighbor_id not in visited:
                                 stack.append(neighbor_id)
                                 visited.add(neighbor_id)
+                    else:
+                        logger.debug(f"  Skipping node {node_id}: Similarity {similarity:.4f} below threshold {self.search_similarity:.4f}.") # Changed to search_similarity
+                else:
+                    logger.debug(f"  Skipping node {node_id}: No embedding found.")
+            else:
+                logger.debug(f"  Skipping node {node_id}: Not a chunk type ({node_data.get('type')}).")
 
-        return "\n\n".join(context)
+        return context # Return the list of chunk contents
 
     def get_state(self):
         return {
@@ -106,7 +119,8 @@ class Agent:
             'topic': self.topic,
             'model_name': self.model_name,
             'similarity_threshold': self.similarity_threshold,
-            'search_sample_ratio': self.search_sample_ratio
+            'search_sample_ratio': self.search_sample_ratio,
+            'search_similarity': self.search_similarity # New attribute
         }
 
     @classmethod
@@ -118,5 +132,6 @@ class Agent:
             embedding_model,
             embedding_tokenizer,
             state['similarity_threshold'],
-            state['search_sample_ratio']
+            state['search_sample_ratio'],
+            state['search_similarity'] # New parameter
         )

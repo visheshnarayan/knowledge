@@ -76,6 +76,7 @@ The project is still under development, and the following features are planned f
 - **Dynamic Document Ingestion**: The system should be able to dynamically ingest new documents and have the agents decide whether to add them to their subgraphs.
 - **Model/Graph Drift**: A mechanism to detect and handle model or graph drift needs to be implemented to keep the knowledge graph up-to-date and relevant.
 - **Vector Database Integration**: The current database setup is planned to be replaced with [Pinecone](https://www.pinecone.io/) for more efficient similarity search at scale.
+- **Visualize Iterative Search Process**: Explore ways to visualize the agent's iterative search process within the knowledge graph to better understand its traversal and context building.
 
 ---
 
@@ -83,15 +84,28 @@ The project is still under development, and the following features are planned f
 
 **8/19/25**
 
-- **Topic Consolidation:** Implemented a new feature to automatically identify and merge redundant or related topics, leading to a more coherent graph structure.
-- **Build Versioning:** Added a build versioning system to manage different builds of the graphs and agents. This allows for creating timestamped builds for experiments while preserving stable builds.
+- **Iterative Topic Consolidation:** Implemented iterative consolidation in `src/parent_model.py` to merge topics until no further consolidations are possible.
+- **Configurable Consolidation:** Added `enable_consolidation` flag to `config.yaml` and implemented conditional execution in `src/runner.py` to control topic consolidation.
+- **Robust LLM Response Parsing:** Refined prompts and improved parsing logic in `src/parent_model.py` to better handle LLM output, including malformed responses, for consolidation instructions.
+- **Improved Logging for LLM Responses:** Modified `src/parent_model.py` to log concise information about unexpected LLM response formats without exposing full raw output.
+- **Process Timing:** Added timing information to major processes in `src/runner.py` (graph building, parent model processing, consolidation, agent creation, visualization, Flask app startup) for performance monitoring.
+- **Source Display in UI:**
+    - Modified `src/agent.py` to return source contents along with the LLM response.
+    - Modified `src/app.py` to pass source contents to the UI.
+    - Modified `templates/index.html` to display sources in a separate, toggleable pane.
+- **Enhanced Debugging for Source Search:**
+    - Added detailed debug logs in `src/agent.py` for similarity search, including initial random nodes, nodes popped, and reasons for skipping nodes.
+    - Changed initial random node logging to `info` level and included full content for better visibility.
+- **Configurable Search Similarity:** Added `search_similarity` parameter to `config.yaml` and integrated it into `src/runner.py` and `src/agent.py` for agent context search.
 - **Bug Fixes & Stability:**
+    - Fixed a logic error in `_similarity_search_context` in `src/agent.py` related to `node_embedding` scope.
     - Implemented a more granular state-loading mechanism to intelligently load graphs and agents, preventing unnecessary rebuilding.
     - Resolved a `TypeError` caused by an incorrect number of arguments passed to the `Agent` constructor.
     - Fixed a `TypeError` that occurred when saving the agent state by implementing a new method to only pickle serializable data.
     - Corrected a "Not Found" error in the UI by ensuring the graph visualization files were served correctly.
 - **UI Enhancements:**
     - Added a dropdown menu to the UI to allow toggling between the cosine and triplet graph visualizations.
+    - Implemented a slider in the UI to dynamically adjust the `search_similarity` threshold for agent context search.
 
 **8/18/25**
 
