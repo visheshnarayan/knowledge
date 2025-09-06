@@ -1,5 +1,8 @@
 from pyvis.network import Network
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 class GraphVisualizer:
     def __init__(self, graph):
@@ -10,7 +13,9 @@ class GraphVisualizer:
         legend_html = '<div class="legend">'
         legend_html += '<h4>Topic Legend</h4>'
         legend_html += '<ul>'
-        for topic, color in color_map.items():
+        # Sort items for consistent legend order, maybe put Central Topic first
+        sorted_items = sorted(color_map.items(), key=lambda item: (item[0] != 'Central Topic', item[0]))
+        for topic, color in sorted_items:
             legend_html += f'<li><span class="color-box" style="background-color:{color};"></span>{topic}</li>'
         legend_html += '</ul></div>'
 
@@ -62,6 +67,11 @@ class GraphVisualizer:
         topics = sorted(list(set(d.get('topic') for n, d in self.graph.nodes(data=True) if d.get('topic'))))
         colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
         topic_color_map = {topic: colors[i % len(colors)] for i, topic in enumerate(topics)}
+        
+        topic_node_color = '#333333' # Dark Grey
+        topic_color_map['Central Topic'] = topic_node_color
+        
+        logger.info(f"Topic Color Map: {topic_color_map}")
 
         # 2. Pre-calculate triplet-to-topic mapping for coloring
         triplet_to_topic = {}
@@ -71,32 +81,37 @@ class GraphVisualizer:
                 triplet_node_id = v
                 if chunk_node.get('type') == 'chunk':
                     triplet_to_topic[triplet_node_id] = chunk_node.get('topic')
+        
+        logger.info(f"Triplet to Topic Map: {triplet_to_topic}")
 
         # 3. Add nodes with topic-based coloring and metadata
         for node_id, node_data in self.graph.nodes(data=True):
             node_type = node_data.get('type', 'N/A')
             title_text = f"ID: {node_id}\nType: {node_type}\nContent: {node_data.get('content', 'N/A')}"
-            node_color = '#D3D3D3'  # Default color for unclassified/other nodes
+            node_color = '#D3D3D3'  # Default color
             node_label = str(node_id)
+            topic = "N/A"
 
-            topic = node_data.get('topic')
-            if node_type == "chunk":
-                if topic in topic_color_map:
-                    node_color = topic_color_map[topic]
-                title_text += f"\nFile: {node_data.get('filename', 'N/A')}\nTopic: {topic}"
-
-            elif node_type == "triplet":
-                topic = triplet_to_topic.get(node_id)
-                if topic in topic_color_map:
-                    node_color = topic_color_map[topic]
-                node_label = node_data.get('content', '')
-                title_text += f"\nTopic: {topic}"
-
-            elif node_type == "topic":
-                node_color = topic_color_map.get(node_data.get('content'), '#8A2BE2')
+            if node_type == "topic":
+                node_color = topic_node_color
                 node_label = node_data.get('label', '')
-                title_text = f"Type: {node_type}\nTopic: {node_data.get('content', 'N/A')}"
+                topic = node_data.get('content', 'N/A')
+                title_text = f"Type: {node_type}\nTopic: {topic}"
+            else:
+                topic = node_data.get('topic')
+                if node_type == "chunk":
+                    if topic in topic_color_map:
+                        node_color = topic_color_map[topic]
+                    title_text += f"\nFile: {node_data.get('filename', 'N/A')}\nTopic: {topic}"
 
+                elif node_type == "triplet":
+                    topic = triplet_to_topic.get(node_id)
+                    if topic in topic_color_map:
+                        node_color = topic_color_map[topic]
+                    node_label = node_data.get('content', '')
+                    title_text += f"\nTopic: {topic}"
+            
+            logger.info(f"Node: {node_id}, Type: {node_type}, Topic: {topic}, Color: {node_color}")
             net.add_node(node_id, title=title_text, label=node_label, color=node_color)
 
         # 4. Add edges (no changes needed here)
@@ -121,7 +136,6 @@ class GraphVisualizer:
         with open(output_path, 'r+', encoding='utf-8') as f:
             content = f.read()
             legend_html = self._generate_legend_html(topic_color_map)
-            # Inject legend before the closing body tag
             content = content.replace('</body>', legend_html + '</body>')
             f.seek(0)
             f.write(content)

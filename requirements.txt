@@ -10,3 +10,6 @@ tokenizers==0.13.3
 torch==2.7.1
 numpy==1.23.5
 scikit-learn==1.2.2
+strands-ai
+boto3
+python-dotenv

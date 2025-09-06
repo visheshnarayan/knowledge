@@ -1,0 +1,21 @@
+Timestamp: 2025-08-27 21:18:53
+Question: Who are Mr. and Mrs. Dursley and where do they live?
+Routed Topic: Literary Fiction
+Agent Response: 
+
+Based on the context provided, Mr. and Mrs. Dursley are Harry Potter's aunt and uncle. They live on Privet Drive, specifically at number four. Some key details:
+
+- Mr. Dursley is described as a "big, beefy man with hardly any neck" who works as the director of a drill company called Grunnings. 
+
+- Mrs. Dursley is thin and blonde, and likes spying on her neighbors.
+
+- They have a son named Dudley who they dote on.
+
+- They live in fear that their neighbors will find out about their relation to the Potters, who are wizards.
+
+- Harry Potter is dropped off at their doorstep at number four, Privet Drive after the death of his parents.
+
+So in summary, the Dursleys are Harry's non-magical aunt and uncle who live on Privet Drive, and take in Harry as a baby after his parents are killed.
+
+--------------------------------------------------
+

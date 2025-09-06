@@ -1,0 +1,835 @@
+what each term means.
+
+"Agentic Graph Management" sounds specific. "Agentic" might relate to agency or autonomous agents, and "Graph Management" could involve managing graph structures, like in databases or AI knowledge representation. So this seems like a specialized area, maybe in AI or data management.
+
+"Unclassified" is a very broad term. It usually refers to information not categorized or not yet assigned a classification. In some contexts, like government documents, it means the info isn't secret. But here, as a topic, it's too vague. It could mean anything that hasn't been sorted into a category yet.
+
+Now, can these two be consolidated? For consolidation, one should be a broader category that includes the other. "Unclassified" is too general and doesn't specify any domain. "Agentic Graph Management" is a specific technical term. There's no clear hierarchical relationship here. "Unclassified" doesn't naturally encompass the specific technical topic. They belong to different domains. So, the answer should be NO_CONSOL
+
+NO_CONSOLIDATION2025-08-28 11:05:02,047 - src.parent_agent - INFO - No consolidation for 'Agentic Graph Management' and 'unclassified'.
+2025-08-28 11:05:02,048 - src.parent_agent - INFO - No further consolidations found in Pass 1. Ending iterative consolidation.
+2025-08-28 11:05:02,048 - src.parent_agent - INFO - Iterative topic consolidation finished.
+2025-08-28 11:05:02,048 - src.runner - INFO - Parent agent finished processing graphs in 25.21 seconds.
+2025-08-28 11:05:02,048 - src.runner - INFO - Saving graphs to disk...
+2025-08-28 11:05:02,051 - src.runner - INFO - Graphs saved successfully.
+2025-08-28 11:05:02,051 - src.runner - INFO - Attempting to load agents from previous run...
+2025-08-28 11:05:02,051 - src.runner - INFO - No saved agents found.
+2025-08-28 11:05:02,051 - src.runner - INFO - Creating child agents from loaded graphs...
+2025-08-28 11:05:02,051 - src.runner - INFO - Creating child agents...
+2025-08-28 11:05:02,101 - src.agent - INFO - Strands agent for topic 'Agentic Graph Management' initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:05:02,137 - src.agent - INFO - Strands agent for topic 'unclassified' initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:05:02,137 - src.runner - INFO - 2 child agents created.
+2025-08-28 11:05:02,137 - src.runner - INFO - Saving agents to disk...
+2025-08-28 11:05:02,137 - src.runner - INFO - Agents saved successfully.
+2025-08-28 11:05:02,137 - src.runner - INFO - Child agent loading/creation finished in 0.09 seconds.
+2025-08-28 11:05:02,137 - src.runner - INFO - Creating parent agent...
+2025-08-28 11:05:02,170 - src.parent_agent - INFO - Parent agent initialized with model us.deepseek.r1-v1:0.
+2025-08-28 11:05:02,170 - src.runner - INFO - Parent agent created.
+2025-08-28 11:05:02,170 - src.runner - INFO - Visualizing graphs...
+/Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_cosine.html
+Interactive graph visualization with legend saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_cosine.html
+2025-08-28 11:05:02,218 - src.runner - INFO - Cosine graph visualization saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_cosine.html
+/Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_triplets.html
+Interactive graph visualization with legend saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_triplets.html
+2025-08-28 11:05:02,268 - src.runner - INFO - Triplets graph visualization saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_triplets.html
+2025-08-28 11:05:02,268 - src.runner - INFO - Graph visualization finished in 0.10 seconds.
+2025-08-28 11:05:02,268 - src.runner - INFO - Starting Flask app...
+2025-08-28 11:05:02,268 - src.app - INFO - Creating Flask app...
+2025-08-28 11:05:02,269 - src.app - INFO - Flask app created.
+ * Serving Flask app 'src.app'
+ * Debug mode: on
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+        - Avoid using `tokenizers` before the fork if possible
+        - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with watchdog (fsevents)
+2025-08-28 11:05:04,215 - src.runner - INFO - Initializing runner...
+^C2025-08-28 11:05:06,057 - src.runner - INFO - Flask app startup call finished in 3.79 seconds.
+2025-08-28 11:05:06,057 - src.runner - INFO - Runner finished.
+c(knowledge) Visheshs-MacBook-Pro:knowledge visheshng$ clear
+(knowledge) Visheshs-MacBook-Pro:knowledge visheshng$ uv run python main.py
+2025-08-28 11:07:12,603 - src.runner - INFO - Initializing runner...
+2025-08-28 11:07:17,375 - src.runner - INFO - Output directory set to: data/builds/knowledge-strands
+2025-08-28 11:07:17,375 - src.runner - INFO - Runner initialized.
+2025-08-28 11:07:17,375 - src.runner - INFO - Starting runner...
+2025-08-28 11:07:17,375 - src.runner - INFO - Attempting to load existing build 'knowledge-strands' for re-consolidation...
+2025-08-28 11:07:17,375 - src.runner - INFO - Attempting to load graphs from previous run...
+2025-08-28 11:07:17,375 - src.runner - INFO - No saved graphs found.
+2025-08-28 11:07:17,375 - src.runner - WARNING - Could not load graphs from existing build 'knowledge-strands'. Proceeding with full build.
+2025-08-28 11:07:17,375 - src.runner - INFO - Building graphs from scratch...
+Building graphs...
+Chunking documents...
+Embedding nodes...
+Connecting nodes...
+Extracting triplets...
+Cosine graph built with 26 nodes and 100 edges.
+Triplets graph built with 76 nodes and 50 edges.
+2025-08-28 11:08:21,926 - src.runner - INFO - Graph building finished in 64.55 seconds.
+2025-08-28 11:08:21,926 - src.runner - INFO - Parent agent processing graphs...
+2025-08-28 11:08:22,019 - src.parent_agent - INFO - Parent agent initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:08:22,019 - src.parent_agent - INFO - Parent Agent processing graph...
+2025-08-28 11:08:22,019 - src.parent_agent - INFO - Parent Agent identifying topics from graph...
+knowledge graphs, artificial intelligence, natural language processing, information extraction, knowledge representation, hypergraphs, Harry Potter, fiction, fantasy literature2025-08-28 11:08:23,721 - src.parent_agent - INFO - Identified Overarching Topics: ['knowledge graphs', 'artificial intelligence', 'natural language processing', 'information extraction', 'knowledge representation', 'hypergraphs', 'Harry Potter', 'fiction', 'fantasy literature']
+2025-08-28 11:08:23,721 - src.parent_agent - INFO - Parent Agent classifying and assigning chunks...
+knowledge graphs2025-08-28 11:08:24,119 - src.parent_agent - INFO - Chunk test.txt_chunk_0 assigned to topic: knowledge graphs
+information extraction2025-08-28 11:08:24,622 - src.parent_agent - INFO - Chunk test.txt_chunk_1 assigned to topic: information extraction
+knowledge representation2025-08-28 11:08:25,119 - src.parent_agent - INFO - Chunk test.txt_chunk_2 assigned to topic: knowledge representation
+natural language processing2025-08-28 11:08:28,406 - src.parent_agent - INFO - Chunk test.txt_chunk_3 assigned to topic: natural language processing
+hypergraphs2025-08-28 11:08:30,454 - src.parent_agent - INFO - Chunk test.txt_chunk_4 assigned to topic: hypergraphs
+artificial intelligence2025-08-28 11:08:30,956 - src.parent_agent - INFO - Chunk test.txt_chunk_5 assigned to topic: artificial intelligence
+knowledge graphs2025-08-28 11:08:31,479 - src.parent_agent - INFO - Chunk test.txt_chunk_6 assigned to topic: knowledge graphs
+Harry Potter2025-08-28 11:08:32,295 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_0 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:08:33,370 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_1 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:08:34,335 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_2 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:08:35,255 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_3 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:03,269 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_4 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:04,031 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_5 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:05,055 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_6 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:05,976 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_7 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:07,820 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_8 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:10,586 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_9 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:11,917 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_10 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:13,144 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_11 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:14,272 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_12 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:15,428 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_13 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:16,523 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_14 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:17,957 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_15 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:19,289 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_16 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:20,415 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_17 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:09:22,462 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_18 assigned to topic: Harry Potter
+2025-08-28 11:09:22,463 - src.parent_agent - INFO - Starting iterative topic consolidation...
+2025-08-28 11:09:22,463 - src.parent_agent - INFO - Consolidation Pass 1...
+PARENT: knowledge graphs2025-08-28 11:09:22,910 - src.parent_agent - INFO - Consolidating 'information extraction' into 'knowledge graphs'.
+PARENT: knowledge representation2025-08-28 11:09:23,311 - src.parent_agent - INFO - Consolidating 'knowledge graphs' into 'knowledge representation'.
+NO_CONSOLIDATION2025-08-28 11:09:23,794 - src.parent_agent - INFO - No consolidation for 'knowledge representation' and 'natural language processing'.
+NO_CONSOLIDATION2025-08-28 11:09:24,205 - src.parent_agent - INFO - No consolidation for 'knowledge representation' and 'hypergraphs'.
+PARENT: artificial intelligence2025-08-28 11:09:25,192 - src.parent_agent - INFO - Consolidating 'knowledge representation' into 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:25,715 - src.parent_agent - INFO - No consolidation for 'natural language processing' and 'hypergraphs'.
+PARENT: artificial intelligence2025-08-28 11:09:26,327 - src.parent_agent - INFO - Consolidating 'natural language processing' into 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:26,869 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:27,425 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'Harry Potter'.
+NO_CONSOLIDATION2025-08-28 11:09:28,706 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+2025-08-28 11:09:28,706 - src.parent_agent - INFO - Removed old topic node: topic_information_extraction
+2025-08-28 11:09:28,706 - src.parent_agent - INFO - Removed old topic node: topic_natural_language_processing
+2025-08-28 11:09:28,707 - src.parent_agent - INFO - Consolidation Pass 2...
+PARENT: knowledge representation2025-08-28 11:09:30,243 - src.parent_agent - INFO - Consolidating 'knowledge graphs' into 'knowledge representation'.
+NO_CONSOLIDATION2025-08-28 11:09:30,863 - src.parent_agent - INFO - No consolidation for 'knowledge representation' and 'hypergraphs'.
+PARENT: artificial intelligence2025-08-28 11:09:31,477 - src.parent_agent - INFO - Consolidating 'knowledge representation' into 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:32,194 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:33,014 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'Harry Potter'.
+NO_CONSOLIDATION2025-08-28 11:09:33,763 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+2025-08-28 11:09:33,764 - src.parent_agent - INFO - Removed old topic node: topic_knowledge_graphs
+2025-08-28 11:09:33,764 - src.parent_agent - INFO - Consolidation Pass 3...
+NO_CONSOLIDATION2025-08-28 11:09:34,535 - src.parent_agent - INFO - No consolidation for 'knowledge representation' and 'hypergraphs'.
+PARENT: artificial intelligence2025-08-28 11:09:35,448 - src.parent_agent - INFO - Consolidating 'knowledge representation' into 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:36,289 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:38,352 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'Harry Potter'.
+NO_CONSOLIDATION2025-08-28 11:09:39,091 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+2025-08-28 11:09:39,092 - src.parent_agent - INFO - Removed old topic node: topic_knowledge_representation
+2025-08-28 11:09:39,092 - src.parent_agent - INFO - Consolidation Pass 4...
+NO_CONSOLIDATION2025-08-28 11:09:40,177 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:09:40,923 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'Harry Potter'.
+NO_CONSOLIDATION2025-08-28 11:09:41,716 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+2025-08-28 11:09:41,716 - src.parent_agent - INFO - No further consolidations found in Pass 4. Ending iterative consolidation.
+2025-08-28 11:09:41,716 - src.parent_agent - INFO - Iterative topic consolidation finished.
+2025-08-28 11:09:41,716 - src.parent_agent - INFO - Parent Agent processing graph...
+2025-08-28 11:09:41,716 - src.parent_agent - INFO - Parent Agent identifying topics from graph...
+Knowledge representation, Natural language processing, Agents, Hypergraphs, Fiction, Fantasy, Wizards, Magic2025-08-28 11:09:43,657 - src.parent_agent - INFO - Identified Overarching Topics: ['Knowledge representation', 'Natural language processing', 'Agents', 'Hypergraphs', 'Fiction', 'Fantasy', 'Wizards', 'Magic']
+2025-08-28 11:09:43,657 - src.parent_agent - INFO - Parent Agent classifying and assigning chunks...
+Agents2025-08-28 11:09:44,786 - src.parent_agent - INFO - Chunk test.txt_chunk_0 assigned to topic: Agents
+Agents2025-08-28 11:09:46,013 - src.parent_agent - INFO - Chunk test.txt_chunk_1 assigned to topic: Agents
+Knowledge representation2025-08-28 11:09:46,441 - src.parent_agent - INFO - Chunk test.txt_chunk_2 assigned to topic: Knowledge representation
+Natural language processing2025-08-28 11:09:46,863 - src.parent_agent - INFO - Chunk test.txt_chunk_3 assigned to topic: Natural language processing
+Hypergraphs2025-08-28 11:09:47,449 - src.parent_agent - INFO - Chunk test.txt_chunk_4 assigned to topic: Hypergraphs
+Knowledge representation2025-08-28 11:09:47,859 - src.parent_agent - INFO - Chunk test.txt_chunk_5 assigned to topic: Knowledge representation
+Agents2025-08-28 11:09:48,371 - src.parent_agent - INFO - Chunk test.txt_chunk_6 assigned to topic: Agents
+Fiction2025-08-28 11:09:48,945 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_0 assigned to topic: Fiction
+Fiction2025-08-28 11:09:49,496 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_1 assigned to topic: Fiction
+Fantasy2025-08-28 11:09:50,224 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_2 assigned to topic: Fantasy
+Fantasy2025-08-28 11:09:51,033 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_3 assigned to topic: Fantasy
+Fantasy2025-08-28 11:09:51,952 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_4 assigned to topic: Fantasy
+Fiction2025-08-28 11:09:52,875 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_5 assigned to topic: Fiction
+Fantasy2025-08-28 11:09:53,695 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_6 assigned to topic: Fantasy
+Fantasy2025-08-28 11:09:54,705 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_7 assigned to topic: Fantasy
+Fantasy2025-08-28 11:09:55,642 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_8 assigned to topic: Fantasy
+Fantasy2025-08-28 11:09:57,076 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_9 assigned to topic: Fantasy
+Fantasy2025-08-28 11:09:58,133 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_10 assigned to topic: Fantasy
+Wizards2025-08-28 11:10:00,552 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_11 assigned to topic: Wizards
+Wizards2025-08-28 11:10:01,581 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_12 assigned to topic: Wizards
+Wizards2025-08-28 11:10:02,909 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_13 assigned to topic: Wizards
+Magic2025-08-28 11:10:04,222 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_14 assigned to topic: Magic
+Magic2025-08-28 11:10:05,368 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_15 assigned to topic: Magic
+Magic2025-08-28 11:10:06,613 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_16 assigned to topic: Magic
+Magic2025-08-28 11:10:07,829 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_17 assigned to topic: Magic
+Magic2025-08-28 11:10:09,260 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_18 assigned to topic: Magic
+2025-08-28 11:10:09,260 - src.parent_agent - INFO - Starting iterative topic consolidation...
+2025-08-28 11:10:09,261 - src.parent_agent - INFO - Consolidation Pass 1...
+PARENT: Knowledge representation2025-08-28 11:10:10,212 - src.parent_agent - INFO - Consolidating 'Agents' into 'Knowledge representation'.
+NO_CONSOLIDATION2025-08-28 11:10:10,692 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Natural language processing'.
+NO_CONSOLIDATION2025-08-28 11:10:11,144 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Hypergraphs'.
+NO_CONSOLIDATION2025-08-28 11:10:11,584 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Fiction'.
+NO_CONSOLIDATION2025-08-28 11:10:12,637 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Fantasy'.
+NO_CONSOLIDATION2025-08-28 11:10:13,144 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Wizards'.
+NO_CONSOLIDATION2025-08-28 11:10:13,973 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Magic'.
+NO_CONSOLIDATION2025-08-28 11:10:14,417 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Hypergraphs'.
+NO_CONSOLIDATION2025-08-28 11:10:15,096 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Fiction'.
+NO_CONSOLIDATION2025-08-28 11:10:15,816 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Fantasy'.
+NO_CONSOLIDATION2025-08-28 11:10:16,327 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Wizards'.
+NO_CONSOLIDATION2025-08-28 11:10:16,947 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Magic'.
+NO_CONSOLIDATION2025-08-28 11:10:17,496 - src.parent_agent - INFO - No consolidation for 'Hypergraphs' and 'Fiction'.
+NO_CONSOLIDATION2025-08-28 11:10:18,175 - src.parent_agent - INFO - No consolidation for 'Hypergraphs' and 'Fantasy'.
+NO_CONSOLIDATION2025-08-28 11:10:18,886 - src.parent_agent - INFO - No consolidation for 'Hypergraphs' and 'Wizards'.
+NO_CONSOLIDATION2025-08-28 11:10:19,524 - src.parent_agent - INFO - No consolidation for 'Hypergraphs' and 'Magic'.
+PARENT: Fiction2025-08-28 11:10:20,366 - src.parent_agent - INFO - Consolidating 'Fantasy' into 'Fiction'.
+PARENT: Fiction2025-08-28 11:10:21,547 - src.parent_agent - INFO - Consolidating 'Wizards' into 'Fiction'.
+PARENT: Fiction2025-08-28 11:10:22,367 - src.parent_agent - INFO - Consolidating 'Magic' into 'Fiction'.
+2025-08-28 11:10:22,368 - src.parent_agent - INFO - Removed old topic node: topic_Agents
+2025-08-28 11:10:22,368 - src.parent_agent - INFO - Removed old topic node: topic_Fantasy
+2025-08-28 11:10:22,368 - src.parent_agent - INFO - Removed old topic node: topic_Wizards
+2025-08-28 11:10:22,368 - src.parent_agent - INFO - Removed old topic node: topic_Magic
+2025-08-28 11:10:22,368 - src.parent_agent - INFO - Consolidation Pass 2...
+NO_CONSOLIDATION2025-08-28 11:10:23,528 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Natural language processing'.
+NO_CONSOLIDATION2025-08-28 11:10:24,327 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Hypergraphs'.
+NO_CONSOLIDATION2025-08-28 11:10:25,338 - src.parent_agent - INFO - No consolidation for 'Knowledge representation' and 'Fiction'.
+NO_CONSOLIDATION2025-08-28 11:10:26,081 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Hypergraphs'.
+NO_CONSOLIDATION2025-08-28 11:10:27,078 - src.parent_agent - INFO - No consolidation for 'Natural language processing' and 'Fiction'.
+NO_CONSOLIDATION2025-08-28 11:10:27,796 - src.parent_agent - INFO - No consolidation for 'Hypergraphs' and 'Fiction'.
+2025-08-28 11:10:27,796 - src.parent_agent - INFO - No further consolidations found in Pass 2. Ending iterative consolidation.
+2025-08-28 11:10:27,796 - src.parent_agent - INFO - Iterative topic consolidation finished.
+2025-08-28 11:10:27,796 - src.runner - INFO - Parent agent finished processing graphs in 125.87 seconds.
+2025-08-28 11:10:27,796 - src.runner - INFO - Saving graphs to disk...
+2025-08-28 11:10:27,801 - src.runner - INFO - Graphs saved successfully.
+2025-08-28 11:10:27,801 - src.runner - INFO - Attempting to load agents from previous run...
+2025-08-28 11:10:27,801 - src.runner - INFO - No saved agents found.
+2025-08-28 11:10:27,801 - src.runner - INFO - Creating child agents from loaded graphs...
+2025-08-28 11:10:27,801 - src.runner - INFO - Creating child agents...
+2025-08-28 11:10:27,853 - src.agent - INFO - Strands agent for topic 'Knowledge representation' initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:10:27,886 - src.agent - INFO - Strands agent for topic 'Natural language processing' initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:10:27,915 - src.agent - INFO - Strands agent for topic 'Hypergraphs' initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:10:28,021 - src.agent - INFO - Strands agent for topic 'Fiction' initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:10:28,021 - src.runner - INFO - 4 child agents created.
+2025-08-28 11:10:28,021 - src.runner - INFO - Saving agents to disk...
+2025-08-28 11:10:28,022 - src.runner - INFO - Agents saved successfully.
+2025-08-28 11:10:28,022 - src.runner - INFO - Child agent loading/creation finished in 0.22 seconds.
+2025-08-28 11:10:28,022 - src.runner - INFO - Creating parent agent...
+2025-08-28 11:10:28,050 - src.parent_agent - INFO - Parent agent initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:10:28,050 - src.runner - INFO - Parent agent created.
+2025-08-28 11:10:28,050 - src.runner - INFO - Visualizing graphs...
+/Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_cosine.html
+Interactive graph visualization with legend saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_cosine.html
+2025-08-28 11:10:28,096 - src.runner - INFO - Cosine graph visualization saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_cosine.html
+/Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_triplets.html
+Interactive graph visualization with legend saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_triplets.html
+2025-08-28 11:10:28,138 - src.runner - INFO - Triplets graph visualization saved to /Users/visheshng/Documents/Research/knowledge/data/builds/knowledge-strands/output_triplets.html
+2025-08-28 11:10:28,138 - src.runner - INFO - Graph visualization finished in 0.09 seconds.
+2025-08-28 11:10:28,138 - src.runner - INFO - Starting Flask app...
+2025-08-28 11:10:28,138 - src.app - INFO - Creating Flask app...
+2025-08-28 11:10:28,139 - src.app - INFO - Flask app created.
+ * Serving Flask app 'src.app'
+ * Debug mode: on
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+        - Avoid using `tokenizers` before the fork if possible
+        - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with watchdog (fsevents)
+2025-08-28 11:10:29,994 - src.runner - INFO - Initializing runner...
+2025-08-28 11:10:35,661 - src.runner - INFO - Output directory set to: data/builds/knowledge-strands
+2025-08-28 11:10:35,661 - src.runner - INFO - Runner initialized.
+2025-08-28 11:10:35,661 - src.runner - INFO - Starting runner...
+2025-08-28 11:10:35,661 - src.runner - INFO - Attempting to load existing build 'knowledge-strands' for re-consolidation...
+2025-08-28 11:10:35,661 - src.runner - INFO - Attempting to load graphs from previous run...
+2025-08-28 11:10:35,664 - src.runner - INFO - Graphs loaded successfully.
+2025-08-28 11:10:35,664 - src.runner - INFO - Successfully loaded existing build 'knowledge-strands'.
+2025-08-28 11:10:35,816 - src.parent_agent - INFO - Parent agent initialized with model anthropic.claude-3-sonnet-20240229-v1:0.
+2025-08-28 11:10:35,816 - src.runner - INFO - Re-consolidating topics on loaded graphs...
+2025-08-28 11:10:35,816 - src.parent_agent - INFO - Parent Agent processing graph...
+2025-08-28 11:10:35,816 - src.parent_agent - INFO - Parent Agent identifying topics from graph...
+Knowledge graphs, Agents, Ontologies, Hypergraphs, Artificial intelligence, Literature, Fantasy, Harry Potter2025-08-28 11:10:38,917 - src.parent_agent - INFO - Identified Overarching Topics: ['Knowledge graphs', 'Agents', 'Ontologies', 'Hypergraphs', 'Artificial intelligence', 'Literature', 'Fantasy', 'Harry Potter']
+2025-08-28 11:10:38,917 - src.parent_agent - INFO - Parent Agent classifying and assigning chunks...
+Agents2025-08-28 11:10:39,338 - src.parent_agent - INFO - Chunk test.txt_chunk_0 assigned to topic: Agents
+Knowledge graphs2025-08-28 11:10:39,785 - src.parent_agent - INFO - Chunk test.txt_chunk_1 assigned to topic: Knowledge graphs
+Knowledge graphs2025-08-28 11:10:40,599 - src.parent_agent - INFO - Chunk test.txt_chunk_2 assigned to topic: Knowledge graphs
+Agents2025-08-28 11:10:41,075 - src.parent_agent - INFO - Chunk test.txt_chunk_3 assigned to topic: Agents
+Hypergraphs2025-08-28 11:10:41,622 - src.parent_agent - INFO - Chunk test.txt_chunk_4 assigned to topic: Hypergraphs
+Agents2025-08-28 11:10:42,052 - src.parent_agent - INFO - Chunk test.txt_chunk_5 assigned to topic: Agents
+Knowledge graphs2025-08-28 11:10:42,644 - src.parent_agent - INFO - Chunk test.txt_chunk_6 assigned to topic: Knowledge graphs
+Harry Potter2025-08-28 11:10:43,437 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_0 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:43,999 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_1 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:44,998 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_2 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:45,719 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_3 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:46,433 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_4 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:47,150 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_5 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:47,967 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_6 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:49,093 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_7 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:50,308 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_8 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:51,218 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_9 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:52,157 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_10 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:53,190 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_11 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:54,214 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_12 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:55,546 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_13 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:56,673 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_14 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:57,799 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_15 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:10:59,031 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_16 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:11:00,255 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_17 assigned to topic: Harry Potter
+Harry Potter2025-08-28 11:11:01,483 - src.parent_agent - INFO - Chunk harry_potter_chapter.txt_chunk_18 assigned to topic: Harry Potter
+2025-08-28 11:11:01,483 - src.parent_agent - INFO - Starting iterative topic consolidation...
+2025-08-28 11:11:01,484 - src.parent_agent - INFO - Consolidation Pass 1...
+NO_CONSOLIDATION2025-08-28 11:11:01,863 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'artificial intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:02,334 - src.parent_agent - INFO - No consolidation for 'hypergraphs' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:02,828 - src.parent_agent - INFO - New parent topic 'Artificial Intelligence' identified by LLM.
+2025-08-28 11:11:02,829 - src.parent_agent - INFO - Consolidating 'Agents' into 'Artificial Intelligence'.
+PARENT: Knowledge Representation2025-08-28 11:11:03,425 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:03,425 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:04,222 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:04,705 - src.parent_agent - INFO - Consolidating 'Knowledge graphs' into 'Artificial Intelligence'.
+PARENT: Artificial Intelligence2025-08-28 11:11:05,274 - src.parent_agent - INFO - Consolidating 'Hypergraphs' into 'Artificial Intelligence'.
+2025-08-28 11:11:05,275 - src.parent_agent - INFO - Removed old topic node: topic_Agents
+2025-08-28 11:11:05,275 - src.parent_agent - INFO - Removed old topic node: topic_Knowledge_graphs
+2025-08-28 11:11:05,275 - src.parent_agent - INFO - Removed old topic node: topic_Hypergraphs
+2025-08-28 11:11:05,275 - src.parent_agent - INFO - Consolidation Pass 2...
+PARENT: Knowledge Representation2025-08-28 11:11:05,783 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:05,783 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:06,577 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:07,439 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:08,344 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:08,344 - src.parent_agent - INFO - Consolidation Pass 3...
+PARENT: Knowledge Representation2025-08-28 11:11:09,167 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:09,167 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:09,800 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:10,893 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:11,784 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:11,784 - src.parent_agent - INFO - Consolidation Pass 4...
+PARENT: Knowledge Representation2025-08-28 11:11:12,461 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:12,462 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:13,266 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:14,015 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:15,102 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:15,103 - src.parent_agent - INFO - Consolidation Pass 5...
+PARENT: Knowledge Representation2025-08-28 11:11:15,924 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:15,924 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:16,918 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:18,525 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:19,307 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:19,307 - src.parent_agent - INFO - Consolidation Pass 6...
+PARENT: Knowledge Representation2025-08-28 11:11:20,124 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:20,124 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:21,094 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:22,376 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:24,218 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:24,219 - src.parent_agent - INFO - Consolidation Pass 7...
+PARENT: Knowledge Representation2025-08-28 11:11:26,098 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:26,098 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:27,087 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:27,890 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:28,787 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:28,787 - src.parent_agent - INFO - Consolidation Pass 8...
+PARENT: Knowledge Representation2025-08-28 11:11:29,627 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:29,627 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:30,638 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:31,399 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:32,727 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:32,727 - src.parent_agent - INFO - Consolidation Pass 9...
+PARENT: Knowledge Representation2025-08-28 11:11:34,754 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:34,754 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:35,756 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:36,532 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:38,452 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:38,452 - src.parent_agent - INFO - Consolidation Pass 10...
+PARENT: Knowledge Representation2025-08-28 11:11:39,472 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:39,472 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:40,523 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:41,542 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:42,549 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:42,550 - src.parent_agent - INFO - Consolidation Pass 11...
+PARENT: Knowledge Representation2025-08-28 11:11:43,647 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:43,647 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:44,391 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:45,129 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:46,079 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:46,079 - src.parent_agent - INFO - Consolidation Pass 12...
+PARENT: Knowledge Representation2025-08-28 11:11:47,974 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:47,975 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:48,897 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:51,189 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:51,969 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:51,969 - src.parent_agent - INFO - Consolidation Pass 13...
+PARENT: Knowledge Representation2025-08-28 11:11:52,689 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:52,689 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:53,814 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:54,815 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:55,554 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:55,554 - src.parent_agent - INFO - Consolidation Pass 14...
+PARENT: Knowledge Representation2025-08-28 11:11:56,309 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:11:56,309 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:11:57,174 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:11:58,011 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:11:59,490 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:11:59,490 - src.parent_agent - INFO - Consolidation Pass 15...
+PARENT: Knowledge Representation2025-08-28 11:12:00,197 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:00,198 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:00,874 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:01,698 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:02,519 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:02,519 - src.parent_agent - INFO - Consolidation Pass 16...
+PARENT: Knowledge Representation2025-08-28 11:12:03,267 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:03,267 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:04,122 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:04,839 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:06,177 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:06,178 - src.parent_agent - INFO - Consolidation Pass 17...
+PARENT: Knowledge Representation2025-08-28 11:12:06,999 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:06,999 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:07,841 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:08,904 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:10,810 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:10,810 - src.parent_agent - INFO - Consolidation Pass 18...
+PARENT: Knowledge Representation2025-08-28 11:12:11,635 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:11,635 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:12,450 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:13,171 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:14,579 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:14,580 - src.parent_agent - INFO - Consolidation Pass 19...
+PARENT: Knowledge Representation2025-08-28 11:12:15,832 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:15,832 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:16,648 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:17,979 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:18,799 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:18,800 - src.parent_agent - INFO - Consolidation Pass 20...
+PARENT: Knowledge Representation2025-08-28 11:12:20,216 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:20,216 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:21,667 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:22,383 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:23,100 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:23,100 - src.parent_agent - INFO - Consolidation Pass 21...
+PARENT: Knowledge Representation2025-08-28 11:12:24,352 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:24,352 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:25,144 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:25,865 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:26,684 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:26,684 - src.parent_agent - INFO - Consolidation Pass 22...
+PARENT: Knowledge Representation2025-08-28 11:12:27,503 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:27,503 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:28,314 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:29,039 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:31,189 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:31,189 - src.parent_agent - INFO - Consolidation Pass 23...
+PARENT: Knowledge Representation2025-08-28 11:12:32,120 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:32,121 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:32,832 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:33,556 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:34,263 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:34,263 - src.parent_agent - INFO - Consolidation Pass 24...
+PARENT: Knowledge Representation2025-08-28 11:12:36,514 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:36,514 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:37,336 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:38,038 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:38,784 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:38,785 - src.parent_agent - INFO - Consolidation Pass 25...
+PARENT: Knowledge Representation2025-08-28 11:12:39,584 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:39,584 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:40,304 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:41,340 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:42,962 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:42,963 - src.parent_agent - INFO - Consolidation Pass 26...
+PARENT: Knowledge Representation2025-08-28 11:12:43,683 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:43,683 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:44,402 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:45,134 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:46,137 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:46,137 - src.parent_agent - INFO - Consolidation Pass 27...
+PARENT: Knowledge Representation2025-08-28 11:12:47,163 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:47,163 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:48,616 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:49,420 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:50,113 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:50,113 - src.parent_agent - INFO - Consolidation Pass 28...
+PARENT: Knowledge Representation2025-08-28 11:12:51,291 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:51,291 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:52,013 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:52,796 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:53,699 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:53,700 - src.parent_agent - INFO - Consolidation Pass 29...
+PARENT: Knowledge Representation2025-08-28 11:12:54,442 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:54,442 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:55,254 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:56,277 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:12:56,996 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:12:56,996 - src.parent_agent - INFO - Consolidation Pass 30...
+PARENT: Knowledge Representation2025-08-28 11:12:57,746 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:12:57,746 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:12:58,521 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:12:59,229 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:00,317 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:00,317 - src.parent_agent - INFO - Consolidation Pass 31...
+PARENT: Knowledge Representation2025-08-28 11:13:01,254 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:01,254 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:02,035 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:02,832 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:03,752 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:03,753 - src.parent_agent - INFO - Consolidation Pass 32...
+PARENT: Knowledge Representation2025-08-28 11:13:04,718 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:04,718 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:05,906 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:06,653 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:07,849 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:07,849 - src.parent_agent - INFO - Consolidation Pass 33...
+PARENT: Knowledge Representation2025-08-28 11:13:08,574 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:08,574 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:09,554 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:10,434 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:11,432 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:11,433 - src.parent_agent - INFO - Consolidation Pass 34...
+PARENT: Knowledge Representation2025-08-28 11:13:12,200 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:12,200 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:13,601 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:14,331 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:15,099 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:15,099 - src.parent_agent - INFO - Consolidation Pass 35...
+PARENT: Knowledge Representation2025-08-28 11:13:16,964 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:16,964 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:17,671 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:18,566 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:19,475 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:19,475 - src.parent_agent - INFO - Consolidation Pass 36...
+PARENT: Knowledge Representation2025-08-28 11:13:20,177 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:20,177 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:21,110 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:21,878 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:22,721 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:22,721 - src.parent_agent - INFO - Consolidation Pass 37...
+PARENT: Knowledge Representation2025-08-28 11:13:23,419 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:23,419 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:24,478 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:26,186 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:26,999 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:26,999 - src.parent_agent - INFO - Consolidation Pass 38...
+PARENT: Knowledge Representation2025-08-28 11:13:27,823 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:27,823 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:28,821 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:31,199 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:13:31,939 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:13:31,939 - src.parent_agent - INFO - Consolidation Pass 39...
+PARENT: Knowledge Representation2025-08-28 11:13:32,736 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:13:32,736 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:13:33,472 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:13:34,221 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:02,858 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:02,859 - src.parent_agent - INFO - Consolidation Pass 40...
+PARENT: Knowledge Representation2025-08-28 11:14:03,921 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:03,921 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:04,663 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:05,400 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:06,176 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:06,177 - src.parent_agent - INFO - Consolidation Pass 41...
+PARENT: Knowledge Representation2025-08-28 11:14:06,936 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:06,936 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:07,754 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:08,475 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:09,839 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:09,839 - src.parent_agent - INFO - Consolidation Pass 42...
+PARENT: Knowledge Representation2025-08-28 11:14:10,508 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:10,508 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:11,937 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:12,668 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:13,507 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:13,507 - src.parent_agent - INFO - Consolidation Pass 43...
+PARENT: Knowledge Representation2025-08-28 11:14:14,307 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:14,307 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:15,737 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:16,462 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:23,326 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:23,327 - src.parent_agent - INFO - Consolidation Pass 44...
+PARENT: Knowledge Representation2025-08-28 11:14:24,179 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:24,179 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:25,208 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:26,215 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:29,790 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:29,791 - src.parent_agent - INFO - Consolidation Pass 45...
+PARENT: Knowledge Representation2025-08-28 11:14:32,007 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:32,007 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:33,499 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:34,334 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:36,064 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:36,064 - src.parent_agent - INFO - Consolidation Pass 46...
+PARENT: Knowledge Representation2025-08-28 11:14:36,952 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:36,953 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:37,963 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:38,702 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:40,114 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:40,115 - src.parent_agent - INFO - Consolidation Pass 47...
+PARENT: Knowledge Representation2025-08-28 11:14:41,136 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:41,136 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:42,158 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:43,873 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:44,792 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:44,793 - src.parent_agent - INFO - Consolidation Pass 48...
+PARENT: Knowledge Representation2025-08-28 11:14:45,982 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:45,982 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:46,796 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:48,101 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:49,102 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:49,103 - src.parent_agent - INFO - Consolidation Pass 49...
+PARENT: Knowledge Representation2025-08-28 11:14:50,048 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:50,048 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:51,386 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:52,662 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:53,459 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:53,460 - src.parent_agent - INFO - Consolidation Pass 50...
+PARENT: Knowledge Representation2025-08-28 11:14:55,016 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:55,016 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:14:56,157 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:14:57,521 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:14:58,541 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:14:58,541 - src.parent_agent - INFO - Consolidation Pass 51...
+PARENT: Knowledge Representation2025-08-28 11:14:59,383 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:14:59,383 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:00,223 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:01,023 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:02,024 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:02,025 - src.parent_agent - INFO - Consolidation Pass 52...
+PARENT: Knowledge Representation2025-08-28 11:15:02,946 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:02,946 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:04,526 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:05,272 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:06,520 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:06,521 - src.parent_agent - INFO - Consolidation Pass 53...
+PARENT: Knowledge Representation2025-08-28 11:15:07,248 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:07,248 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:07,967 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:08,700 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:09,403 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:09,403 - src.parent_agent - INFO - Consolidation Pass 54...
+PARENT: Knowledge Representation2025-08-28 11:15:10,118 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:10,119 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:11,039 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:11,960 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:12,678 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:12,678 - src.parent_agent - INFO - Consolidation Pass 55...
+PARENT: Knowledge Representation2025-08-28 11:15:13,394 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:13,394 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:14,107 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:15,749 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:16,466 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:16,466 - src.parent_agent - INFO - Consolidation Pass 56...
+PARENT: Knowledge Representation2025-08-28 11:15:17,494 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:17,495 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:18,219 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:19,005 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:19,748 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:19,748 - src.parent_agent - INFO - Consolidation Pass 57...
+PARENT: Knowledge Representation2025-08-28 11:15:20,900 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:20,900 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:21,603 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:22,334 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:23,840 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:23,840 - src.parent_agent - INFO - Consolidation Pass 58...
+PARENT: Knowledge Representation2025-08-28 11:15:24,580 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:24,581 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:25,279 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:26,006 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:26,707 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:26,707 - src.parent_agent - INFO - Consolidation Pass 59...
+PARENT: Knowledge Representation2025-08-28 11:15:27,526 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:27,527 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:28,315 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:29,088 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:29,808 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:29,808 - src.parent_agent - INFO - Consolidation Pass 60...
+PARENT: Knowledge Representation2025-08-28 11:15:30,767 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:30,767 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:32,134 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:32,861 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:33,871 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:33,871 - src.parent_agent - INFO - Consolidation Pass 61...
+PARENT: Knowledge Representation2025-08-28 11:15:34,561 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:34,561 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:35,322 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:37,118 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:37,902 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:37,902 - src.parent_agent - INFO - Consolidation Pass 62...
+PARENT: Knowledge Representation2025-08-28 11:15:38,690 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:38,690 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:39,629 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:40,386 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:41,181 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:41,182 - src.parent_agent - INFO - Consolidation Pass 63...
+PARENT: Knowledge Representation2025-08-28 11:15:41,965 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:41,965 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:42,987 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:43,709 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:44,464 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:44,464 - src.parent_agent - INFO - Consolidation Pass 64...
+PARENT: Knowledge Representation2025-08-28 11:15:45,243 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:45,243 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:46,060 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:48,639 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:49,450 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:49,450 - src.parent_agent - INFO - Consolidation Pass 65...
+PARENT: Knowledge Representation2025-08-28 11:15:50,200 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:50,200 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:50,875 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:52,411 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:53,824 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:53,824 - src.parent_agent - INFO - Consolidation Pass 66...
+PARENT: Knowledge Representation2025-08-28 11:15:54,662 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:54,662 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:55,891 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:15:56,578 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:15:57,529 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:15:57,530 - src.parent_agent - INFO - Consolidation Pass 67...
+PARENT: Knowledge Representation2025-08-28 11:15:58,348 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:15:58,349 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:15:59,065 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:00,132 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:00,909 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:00,909 - src.parent_agent - INFO - Consolidation Pass 68...
+PARENT: Knowledge Representation2025-08-28 11:16:01,943 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:01,944 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:02,751 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:03,469 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:04,185 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:04,186 - src.parent_agent - INFO - Consolidation Pass 69...
+PARENT: Knowledge Representation2025-08-28 11:16:04,911 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:04,911 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:05,821 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:06,848 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:07,564 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:07,565 - src.parent_agent - INFO - Consolidation Pass 70...
+PARENT: Knowledge Representation2025-08-28 11:16:08,281 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:08,282 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:09,028 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:09,749 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:10,426 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:10,426 - src.parent_agent - INFO - Consolidation Pass 71...
+PARENT: Knowledge Representation2025-08-28 11:16:11,348 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:11,348 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:12,172 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:13,717 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:14,426 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:14,426 - src.parent_agent - INFO - Consolidation Pass 72...
+PARENT: Knowledge Representation2025-08-28 11:16:15,269 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:15,269 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:16,064 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:16,965 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:17,907 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:17,908 - src.parent_agent - INFO - Consolidation Pass 73...
+PARENT: Knowledge Representation2025-08-28 11:16:18,827 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:18,827 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:19,752 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:20,774 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:22,838 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:22,838 - src.parent_agent - INFO - Consolidation Pass 74...
+PARENT: Knowledge Representation2025-08-28 11:16:23,539 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:23,539 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:24,255 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:24,984 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:26,098 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:26,098 - src.parent_agent - INFO - Consolidation Pass 75...
+PARENT: Knowledge Representation2025-08-28 11:16:27,077 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:27,077 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:27,793 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:29,274 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:29,991 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:29,992 - src.parent_agent - INFO - Consolidation Pass 76...
+PARENT: Knowledge Representation2025-08-28 11:16:30,914 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:30,914 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:31,655 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:32,386 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:33,141 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:33,142 - src.parent_agent - INFO - Consolidation Pass 77...
+PARENT: Knowledge Representation2025-08-28 11:16:33,849 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:33,849 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+NO_CONSOLIDATION2025-08-28 11:16:41,582 - src.parent_agent - INFO - No consolidation for 'artificial intelligence' and 'Harry Potter'.
+PARENT: Artificial Intelligence2025-08-28 11:16:42,363 - src.parent_agent - INFO - Consolidating 'artificial intelligence' into 'Artificial Intelligence'.
+NO_CONSOLIDATION2025-08-28 11:16:43,614 - src.parent_agent - INFO - No consolidation for 'Harry Potter' and 'Artificial Intelligence'.
+2025-08-28 11:16:43,614 - src.parent_agent - INFO - Consolidation Pass 78...
+PARENT: Knowledge Representation2025-08-28 11:16:44,381 - src.parent_agent - INFO - New parent topic 'Knowledge Representation' identified by LLM.
+2025-08-28 11:16:44,381 - src.parent_agent - INFO - Consolidating 'hypergraphs' into 'Knowledge Representation'.
+Traceback (most recent call last):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/urllib3/response.py", line 779, in _error_catcher
+    yield
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1248, in read_chunked
+    self._update_chunk_length()
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1167, in _update_chunk_length
+    line = self._fp.fp.readline()  # type: ignore[union-attr]
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 717, in readinto
+    return self._sock.recv_into(b)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/ssl.py", line 1307, in recv_into
+    return self.read(nbytes, buffer)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/ssl.py", line 1163, in read
+    return self._sslobj.read(len, buffer)
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/visheshng/Documents/Research/knowledge/main.py", line 19, in <module>
+    runner.run()
+  File "/Users/visheshng/Documents/Research/knowledge/src/runner.py", line 93, in run
+    processed_cosine_graph = temp_parent_agent.process_graph(processed_cosine_graph, self.config.get('graph'))
+  File "/Users/visheshng/Documents/Research/knowledge/src/parent_agent.py", line 324, in process_graph
+    processed_graph = self.consolidate_topics(processed_graph)
+  File "/Users/visheshng/Documents/Research/knowledge/src/parent_agent.py", line 204, in consolidate_topics
+    agent_result = consolidation_agent(user_prompt)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 381, in __call__
+    return future.result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/opentelemetry/instrumentation/threading/__init__.py", line 171, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 377, in execute
+    return asyncio.run(self.invoke_async(prompt, **kwargs))
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 402, in invoke_async
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 535, in stream_async
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 571, in _run_loop
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 610, in _execute_event_loop_cycle
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 196, in event_loop_cycle
+    raise e
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 138, in event_loop_cycle
+    async for event in stream_messages(agent.model, agent.system_prompt, agent.messages, tool_specs):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/streaming.py", line 319, in stream_messages
+    async for event in process_stream(chunks):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/streaming.py", line 276, in process_stream
+    async for chunk in chunks:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/models/bedrock.py", line 397, in stream
+    await task
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/opentelemetry/instrumentation/threading/__init__.py", line 171, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/models/bedrock.py", line 432, in _stream
+    for chunk in response["stream"]:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/botocore/eventstream.py", line 591, in __iter__
+    for event in self._event_generator:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/botocore/eventstream.py", line 598, in _create_raw_event_generator
+    for chunk in self._raw_stream.stream():
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1088, in stream
+    yield from self.read_chunked(amt, decode_content=decode_content)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1231, in read_chunked
+    with self._error_catcher():
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/urllib3/response.py", line 784, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
+urllib3.exceptions.ReadTimeoutError: AWSHTTPSConnectionPool(host='bedrock-runtime.us-east-1.amazonaws.com', port=443): Read timed out.
+(knowledge) Visheshs-MacBook-Pro:knowledge visheshng$ 

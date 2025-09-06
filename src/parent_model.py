@@ -2,17 +2,22 @@ from openai import OpenAI
 import os
 import itertools
 from src.logger import get_logger
+import torch
+from sklearn.metrics.pairwise import cosine_similarity
+import random
 
 logger = get_logger(__name__)
 
 class ParentModel:
-    def __init__(self, config):
-        self.config = config
-        self.model_name = self.config.get('model', 'local-model') 
-        logger.info(f"Connecting to Parent Model via LM Studio endpoint...")
+    def __init__(self, lm_studio_config):
+        self.config = lm_studio_config
+        self.model_name = self.config.get('model', 'local-model')
+        base_url = self.config.get('base_url', 'http://localhost:1234/v1')
+        api_key = self.config.get('api_key', 'not-needed')
+        logger.info(f"Connecting to Parent Model via LM Studio endpoint at {base_url}...")
 
         try:
-            self.client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
+            self.client = OpenAI(base_url=base_url, api_key=api_key)
             logger.info("Successfully connected to LM Studio endpoint.")
         except Exception as e:
             logger.error(f"Could not connect to LM Studio endpoint: {e}")
@@ -50,7 +55,7 @@ class ParentModel:
                 all_chunk_texts.append(node_data['content'])
         combined_text = "\n\n".join(all_chunk_texts)
 
-        topic_system_prompt = "You are an expert text analyst. Your task is to identify overarching topics from a collection of texts. Respond ONLY with a comma-separated list of topics. Do not add any conversational text, numbering, or explanations."
+        topic_system_prompt = "You are an expert text analyst. Your task is to identify overarching topics from a collection of texts. Respond ONLY with a comma-separated list of topics. Each topic should be a short phrase. Do not add any conversational text, numbering, explanations, or any other characters."
         topic_identification_prompt = f"Given the following collection of texts, identify a minimal set of overarching topics or categories. List all identified topics as a single, comma-separated list.\n\nTexts:\n{combined_text}\n\nTopics:"
         
         try:
@@ -67,7 +72,7 @@ class ParentModel:
             logger.error(f"Error identifying overarching topics: {e}")
             overarching_topics = ["unclassified"]
 
-        classification_system_prompt = "You are an expert text classifier. Your task is to classify a given text into one of the provided categories. Respond ONLY with the single, most appropriate category name. Do not add any conversational text or explanations."
+        classification_system_prompt = "You are an expert text classifier. Your task is to classify a given text into one of the provided categories. Respond ONLY with the single, most appropriate category name from the list. Your response must be a single word or phrase from the list. Do not add any conversational text, explanations, or any other characters."
         topics_to_chunk_ids = {}
         for node_id, node_data in graph.nodes(data=True):
             if node_data['type'] == "chunk":
@@ -105,7 +110,7 @@ class ParentModel:
     def consolidate_topics(self, graph):
         logger.info("Starting iterative topic consolidation...")
         
-        system_prompt = "You are an expert in knowledge organization and ontology. Your task is to determine if two topics can be consolidated. If they can, respond ONLY and STRICTLY with 'PARENT: <parent_topic_name>'. If they cannot, respond ONLY and STRICTLY with 'NO_CONSOLIDATION'. Do NOT include any conversational text, explanations, or any other characters. Your response must be one of these two formats, and nothing else."
+        system_prompt = "You are an expert in knowledge organization. Your task is to determine if two topics can be consolidated. Your response MUST be in one of two formats and nothing else: 'PARENT: <parent_topic_name>' or 'NO_CONSOLIDATION'. Do not include any conversational text, explanations, or any other characters."
 
         # Keep track of changes to iterate until no more consolidations occur
         consolidated_something_in_this_pass = True
@@ -233,3 +238,112 @@ class ParentModel:
 
         logger.info("Iterative topic consolidation finished.")
         return graph
+
+    def classify_question(self, question, topics):
+        logger.info(f"Parent Model ({self.model_name}) classifying question...")
+        if not self.client:
+            logger.error("LM Studio client not initialized, skipping classification.")
+            return None
+
+        system_prompt = "You are an expert text classifier. Your task is to classify a given question into one of the provided categories. Respond ONLY with the single, most appropriate category name. Do not add any conversational text or explanations."
+        
+        classification_prompt = f"Given the following question, classify it into one of these categories: {', '.join(topics)}. Respond with only the category name.\n\nQuestion: {question}\nCategory:"
+        
+        try:
+            generated_category = self._generate_text(classification_prompt, system_prompt=system_prompt)
+            cleaned_category = generated_category.strip().split('\n')[-1]
+            if ':' in cleaned_category:
+                cleaned_category = cleaned_category.split(':')[-1].strip()
+            cleaned_category = cleaned_category.strip('." ')
+            logger.info(f"Question classified into topic: {cleaned_category}")
+            return cleaned_category
+        except Exception as e:
+            logger.error(f"Error classifying question: {e}")
+            return None
+
+    def query_topic(self, question, context, topic):
+        logger.info(f"Querying topic '{topic}' with question: '{question}'")
+        system_prompt = f"""You are a helpful assistant for the topic '{topic}'. 
+        Answer the question based on the provided context.
+        Context: {context}"""
+        return self._generate_text(question, system_prompt=system_prompt)
+
+class LMStudioQueryRouter:
+    def __init__(self, parent_model, child_agent_data, embedding_model, embedding_tokenizer, search_similarity, search_sample_ratio):
+        self.parent_model = parent_model
+        self.child_agent_data = child_agent_data
+        self.topics = list(child_agent_data.keys())
+        self.embedding_model = embedding_model
+        self.embedding_tokenizer = embedding_tokenizer
+        self.search_similarity = search_similarity
+        self.search_sample_ratio = search_sample_ratio
+
+    def _similarity_search(self, question, subgraph, topic):
+        logger.info(f"Performing similarity search for question: '{question}'")
+
+        def get_embedding(text):
+            inputs = self.embedding_tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+            with torch.no_grad():
+                embedding = self.embedding_model(**inputs).last_hidden_state.mean(dim=1).squeeze().tolist()
+            return embedding
+
+        question_embedding = get_embedding(question)
+
+        topic_node_id = None
+        for node_id, node_data in subgraph.nodes(data=True):
+            if node_data.get('type') == 'topic' and node_data.get('content') == topic:
+                topic_node_id = node_id
+                break
+        
+        if not topic_node_id:
+            logger.error(f"Topic node for topic '{topic}' not found in subgraph.")
+            return ""
+
+        neighbors = list(subgraph.neighbors(topic_node_id))
+        if not neighbors:
+            return ""
+        sample_size = int(len(neighbors) * self.search_sample_ratio)
+        start_nodes = random.sample(neighbors, sample_size)
+        logger.info(f"Starting similarity search from {len(start_nodes)} random nodes.")
+
+        stack = start_nodes.copy()
+        visited = set(start_nodes)
+        context = []
+
+        while stack:
+            node_id = stack.pop()
+            node_data = subgraph.nodes[node_id]
+
+            if node_data.get('type') == 'chunk':
+                node_embedding = node_data.get('embedding')
+                if node_embedding:
+                    similarity = cosine_similarity([question_embedding], [node_embedding])[0][0]
+                    if similarity > self.search_similarity:
+                        context.append(node_data.get('content', ''))
+                        for neighbor_id in subgraph.neighbors(node_id):
+                            if neighbor_id not in visited:
+                                stack.append(neighbor_id)
+                                visited.add(neighbor_id)
+
+        return "\n\n".join(context)
+
+    def query(self, question):
+        logger.info(f"LMStudioQueryRouter received query: '{question}'")
+
+        # 1. Classify question to get topic
+        topic = self.parent_model.classify_question(question, self.topics)
+        if not topic or topic not in self.child_agent_data:
+            logger.error(f"Could not classify question into a valid topic. Classified as: {topic}")
+            return "I am sorry, but I cannot find an appropriate specialist for your question.", [], topic
+
+        # 2. Get subgraph for the topic
+        agent_data = self.child_agent_data[topic]
+        subgraph = agent_data['subgraph']
+
+        # 3. Perform similarity search for context
+        context = self._similarity_search(question, subgraph, topic)
+
+        # 4. Query the parent model with context
+        response = self.parent_model.query_topic(question, context, topic)
+        
+        return response, context.split('\n\n'), topic

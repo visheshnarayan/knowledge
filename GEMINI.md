@@ -70,10 +70,16 @@ The project is structured into several Python modules, each with a specific resp
 
 The project is still under development, and the following features are planned for the future:
 
+- **Live Document Ingestion and Agent-led Classification**:
+    - Implement an endpoint or a watched directory to allow new documents to be added to the system while it's running.
+    - Instead of a global classification model, leverage the existing specialist agents to determine if a new document chunk belongs to their topic.
+- **Inter-Agent Collaboration Protocol**:
+    - Design and implement a mechanism for agents to communicate with each other.
+    - If multiple agents claim a new document chunk, they will engage in a "conversation" (e.g., using a shared prompt with a higher-level LLM, or a predefined negotiation protocol) to resolve the conflict and decide on the best placement for the new information.
+- **Dynamic Graph Updates**:
+    - Once a new chunk is assigned to an agent, the system needs to dynamically update the main knowledge graph and the agent's subgraph with the new node and its connections.
 - **Agent Implementation**: The `agent_model` needs to be implemented to create the "Specialized Agents" that will manage and traverse the subgraphs.
 - **Fine-tuning Agents**: The presentation mentions fine-tuning the agents on their respective subgraphs to improve their expertise.
-- **Inter-Agent Communication**: A protocol for communication between agents needs to be established to enable collaboration.
-- **Dynamic Document Ingestion**: The system should be able to dynamically ingest new documents and have the agents decide whether to add them to their subgraphs.
 - **Model/Graph Drift**: A mechanism to detect and handle model or graph drift needs to be implemented to keep the knowledge graph up-to-date and relevant.
 - **Vector Database Integration**: The current database setup is planned to be replaced with [Pinecone](https://www.pinecone.io/) for more efficient similarity search at scale.
 - **Visualize Iterative Search Process**: Explore ways to visualize the agent's iterative search process within the knowledge graph to better understand its traversal and context building.
@@ -117,3 +123,75 @@ The project is still under development, and the following features are planned f
 - **Configuration:** Made the search sample ratio for the similarity search configurable in the `config.yaml` file.
 
 **Note:** All new code should consistently use the centralized logging system (`src/logger.py`) for better traceability and debugging.
+
+---
+
+**8/27/25**
+
+- **Strands Framework Integration:**
+    - Integrated the Strands AI framework for agent management and orchestration.
+    - Added `strands-ai` to `requirements.txt`.
+    - Updated `config.yaml` to include `strands` configuration, specifying `parent_agent_model_id` (DeepSeek) and `child_agent_model_id` (Claude Sonnet).
+    - Modified `main.py` to load `STRANDS_MODEL_ID` from `config.yaml` and set it as an environment variable for Strands.
+- **Refactored Agent Classes:**
+    - **`src/agent.py`**: Refactored the `Agent` class to use `strands.Agent` and `strands.models.BedrockModel`. The `_similarity_search_context` logic was moved into a `@tool`-decorated method (`similarity_search_tool`) within the `Agent` class.
+    - **`src/parent_agent.py`**: Created a new `ParentAgent` class to act as a routing agent. This agent uses its LLM to determine the topic of a question and then forwards the query to the appropriate child agent.
+- **Updated Orchestration:**
+    - **`src/runner.py`**: Modified to create instances of the new `ParentAgent` and `Agent` (child agents). The `_create_parent_agent` method now instantiates the `ParentAgent` and passes the child agents to it.
+    - **`src/app.py`**: Updated to interact with the `ParentAgent` for query handling and to pass the `child_agents` for dynamic `search_similarity` updates.
+- **Multi-Model Support:** Configured the system to use different Bedrock models for the parent agent (DeepSeek R1) and child agents (Claude 3.5 Sonnet), leveraging their respective strengths.
+- **Testing and Debugging:**
+    - Created `test_agent_communication.py` to verify parent-child agent communication and routing.
+    - Addressed and resolved several issues during implementation and testing:
+        - `AttributeError: 'DecoratedFunctionTool' object has no attribute 'with_parameters'` (fixed by making the tool a method of the `Agent` class).
+        - `TypeError: Agent.__init__() got an unexpected keyword argument 'llm'` (fixed by configuring the model via `STRANDS_MODEL_ID` environment variable and passing `model=` to `StrandsAgent`).
+        - `KeyError: 'bedrock'` (fixed by removing explicit `BedrockModel` instantiation in `Agent` and `ParentAgent` as Strands handles it via environment variables).
+        - `AttributeError: 'Agent' object has no attribute 'run'` (fixed by calling `StrandsAgent` instances directly).
+        - `ValidationException` on tool names (fixed by sanitizing topic names to remove spaces).
+        - `TypeError: unhashable type: 'AgentResult'` (fixed by converting `AgentResult` to string and stripping whitespace).
+        - `EOFError` in test script (fixed by hardcoding the test question).
+        - `ValidationException: The provided model identifier is invalid.` (fixed by using the correct Bedrock model ID for DeepSeek R1).
+- **UI Query Fixes:**
+    - Added a dropdown (`topic-select`) to `templates/index.html` for selecting the target agent topic.
+    - Corrected the JavaScript fetch endpoint in `templates/index.html` from `/query` to `/query_agent`.
+    - Ensured the selected `agent_topic` is included in the JSON payload sent from the UI to the backend.
+
+**8/28/25**
+
+- **ParentModel Deprecation & ParentAgent Enhancement:**
+    - Migrated core graph processing functionalities from `src/parent_model.py` to `src/parent_agent.py`:
+        - Implemented `identify_topics_from_graph` for LLM-driven topic identification.
+        - Implemented `classify_and_assign_chunks` for assigning text chunks to identified topics and modifying the graph.
+        - Implemented `consolidate_topics` for iterative topic consolidation.
+        - Created `process_graph` in `src/parent_agent.py` to orchestrate these new graph processing methods.
+    - Updated `src/runner.py` to exclusively use `ParentAgent.process_graph` for all graph processing steps, effectively deprecating `ParentModel`.
+- **UI/Agent Communication & Context Retrieval Improvements:**
+    - **JSON Serialization Fix:** Modified `src/agent.py` to correctly extract `response_text` and `source_contents` from Strands `AgentResult` objects, resolving `TypeError: Object of type Trace is not JSON serializable` during Flask's `jsonify` process.
+    - **Redundant Topic Removal:**
+        - Removed "Select Agent Topic" dropdown and associated JavaScript payload (`agent_topic`) from `templates/index.html`.
+        - Updated `src/app.py` to no longer expect or use the `topics` argument in `create_app` and its `render_template` calls.
+        - Updated `src/runner.py` to reflect the change in `create_app` signature.
+    - **Context Search Parameter Tuning:**
+        - Lowered `search_similarity` to `0.4` in `config.yaml` to make context retrieval less strict.
+        - Increased `search_sample_ratio` to `0.8` in `config.yaml` to expand the initial search scope for relevant chunks.
+
+---
+
+**9/04/25**
+
+- **Bedrock Model Compatibility:**
+    - Fixed a bug in `src/parent_agent.py` where the API request payload was hardcoded for Anthropic models. The payload is now correctly formatted for DeepSeek models.
+    - Updated the response parsing logic in `src/parent_agent.py` to correctly handle the output from DeepSeek models.
+- **Strands Integration Stability:**
+    - Resolved a `ValidationException` during topic consolidation by ensuring the `StrandsAgent` has a clean history for each API call. This prevents the model's previous reasoning from being sent back to the API.
+    - Suppressed verbose, unformatted logging from the `strands` library by setting its logger level to `CRITICAL` in `main.py`.
+- **Conditional LLM Logging:**
+    - Introduced a `debug` section in `config.yaml` with a `log_llm_responses` flag.
+    - Implemented logic throughout the application to log detailed LLM responses only when this flag is enabled.
+    - Refined the debug logging to only output the final, cleaned LLM response, removing the noisy reasoning text from the console output.
+- **Graph Visualization Enhancements:**
+    - Assigned a unique, uniform color to all "Central Topic" nodes in the graph visualization to make them easily distinguishable.
+    - Updated the legend to include an entry for the new topic node color.
+    - Added detailed logging to `src/graph_visualizer.py` to help diagnose an issue with inconsistent node colors after topic consolidation.
+- **Flask Auto-Reload:**
+    - Disabled the automatic restart feature of the Flask development server by setting `use_reloader=False` in `src/runner.py`.

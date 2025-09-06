@@ -80,12 +80,7 @@
 
         <h2>Query Agents</h2>
         <form id="query-form">
-            <label for="topic-select">Select a Topic:</label>
-            <select id="topic-select" name="topic">
-                {% for topic in topics %}
-                    <option value="{{ topic }}">{{ topic }}</option>
-                {% endfor %}
-            </select>
+            
             <label for="question-input">Ask a Question:</label>
             <textarea id="question-input" name="question" rows="5"></textarea>
             <button type="submit">Submit</button>
@@ -152,7 +147,6 @@
         document.getElementById('query-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const topic = document.getElementById('topic-select').value;
             const question = document.getElementById('question-input').value;
             const responseContainer = document.getElementById('response-container');
             const sourcesContainer = document.getElementById('sources-content'); // Get sources content div
@@ -160,12 +154,12 @@
             responseContainer.innerHTML = '<p>Loading...</p>';
             sourcesContainer.innerHTML = '<p>Loading sources...</p>'; // Clear and show loading for sources
 
-            fetch('/query', {
+            fetch('/query_agent', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ topic, question })
+                body: JSON.stringify({ question })
             })
             .then(response => response.json())
             .then(data => {
@@ -173,7 +167,10 @@
                     responseContainer.innerHTML = `<p><strong>Error:</strong> ${data.error}</p>`;
                     sourcesContainer.innerHTML = '<p>No sources available due to error.</p>';
                 } else {
-                    responseContainer.innerHTML = `<p>${data.response}</p>`;
+                    let responseHtml = `<p><strong>Routed Topic:</strong> ${data.routed_topic || 'N/A'}</p>`; // Display routed topic
+                    responseHtml += `<p>${data.response}</p>`;
+                    responseContainer.innerHTML = responseHtml;
+
                     // Display sources
                     if (data.sources && data.sources.length > 0) {
                         sourcesContainer.innerHTML = data.sources.map((source, index) => `<h4>Source ${index + 1}:</h4><p>${source}</p>`).join('<hr>');

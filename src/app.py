@@ -4,14 +4,14 @@ import os
 
 logger = get_logger(__name__)
 
-def create_app(agents, graph_paths, initial_search_similarity): # Added initial_search_similarity
+def create_app(parent_agent, child_agents, graph_paths, initial_search_similarity):
     logger.info("Creating Flask app...")
     app = Flask(__name__, template_folder='../templates')
 
     @app.route('/')
     def index():
         logger.info("Request received for index page.")
-        return render_template('index.html', topics=list(agents.keys()), initial_search_similarity=initial_search_similarity) # Pass initial_search_similarity
+        return render_template('index.html', initial_search_similarity=initial_search_similarity)
 
     @app.route('/update_search_similarity', methods=['POST'])
     def update_search_similarity():
@@ -30,7 +30,7 @@ def create_app(agents, graph_paths, initial_search_similarity): # Added initial_
             logger.error(f"Invalid similarity value: {new_similarity}. Error: {e}")
             return jsonify({'error': f'Invalid similarity value: {e}'}), 400
 
-        for agent_name, agent_instance in agents.items():
+        for agent_name, agent_instance in child_agents.items():
             agent_instance.search_similarity = new_similarity
             logger.info(f"Updated search_similarity for agent '{agent_name}' to {new_similarity}.")
         
@@ -48,26 +48,20 @@ def create_app(agents, graph_paths, initial_search_similarity): # Added initial_
         graph_filename = os.path.basename(graph_path)
         return send_from_directory(graph_dir, graph_filename)
 
-    @app.route('/query', methods=['POST'])
+    @app.route('/query_agent', methods=['POST'])
     def query():
         logger.info("Request received for query.")
         data = request.get_json()
-        topic = data.get('topic')
         question = data.get('question')
-        logger.info(f"Querying agent for topic: '{topic}' with question: '{question}'")
+        logger.info(f"Querying parent agent with question: '{question}'")
 
-        if not topic or not question:
-            logger.error("Missing topic or question in query.")
-            return jsonify({'error': 'Missing topic or question'}), 400
+        if not question:
+            logger.error("Missing question in query.")
+            return jsonify({'error': 'Missing question'}), 400
 
-        agent = agents.get(topic)
-        if not agent:
-            logger.error(f"Agent for topic '{topic}' not found.")
-            return jsonify({'error': 'Agent for the selected topic not found'}), 404
-
-        response, sources = agent.query(question) # Unpack response and sources
-        logger.info(f"Returning response from agent for topic: '{topic}'")
-        return jsonify({'response': response, 'sources': sources}) # Return both
+        response, sources, routed_topic = parent_agent.query(question)
+        logger.info(f"Returning response from parent agent. Routed topic: {routed_topic}")
+        return jsonify({'response': response, 'sources': sources, 'routed_topic': routed_topic})
 
     logger.info("Flask app created.")
     return app
