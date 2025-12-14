@@ -3,13 +3,20 @@ langchain==0.1.16
 networkx==3.2.1
 matplotlib==3.7.2
 pyvis==0.3.2
+Flask==3.0.0
 
+openai==2.3.0
 huggingface-hub==0.20.3
 transformers==4.31.0
 tokenizers==0.13.3
 torch==2.7.1
 numpy==1.23.5
 scikit-learn==1.2.2
-strands-ai
+strands-agents
 boto3
 python-dotenv
+uv
+requests
+
+git+https://github.com/strands-agents/sdk-python.git@main
+pinecone-client

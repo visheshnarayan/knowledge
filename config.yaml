@@ -6,8 +6,9 @@ data:
 
 output:
   base_dir: "data/builds"
-  version: "knowledge-strands-reasoning" # or a specific name like "latest", "v1", etc.
-  serve_only_mode: true
+  version: "ollama" # or a specific name like "latest", "v1", etc.
+  serve_only_mode: false
+  run_mode: ['cli'] # Options: 'web', 'cli', or both in a list
 
 # Graph Construction
 graph:
@@ -22,19 +23,14 @@ graph:
     metric: "cosine"
     threshold: 0.8
   search_similarity: 0.4 # New parameter for agent context search similarity
+  search_sample_ratio: 0.8 # Ratio of neighboring nodes to sample for initial search
   triplet_extraction:
     model: "Babelscape/rebel-large"
 
-# Parent Model
-# parent_model:
-#   model: "deepseek/deepseek-r1-0528-qwen3-8b:2"
 
-# agent_model:
-#   model: "deepseek/deepseek-r1-0528-qwen3-8b:2"
-#   search_sample_ratio: 0.8
 
 llm_infra:
-  type: 'strands' # 'strands' or 'lm_studio'
+  type: 'ollama' # 'strands', 'lm_studio', or 'ollama'
   strands:
     # parent_agent_model_id: "anthropic.claude-3-sonnet-20240229-v1:0"
     parent_agent_model_id: "us.deepseek.r1-v1:0"
@@ -45,7 +41,15 @@ llm_infra:
     base_url: "http://localhost:1234/v1"
     api_key: "not-needed"
     model: "local-model"
+  ollama:
+    base_url: "http://localhost:11434/v1"
+    api_key: "not-needed"
+    model: "llama3:8b"
 
+# Organizational Table settings
+org_table:
+  load_from_file: true
+  path: "data/builds/ollama/org_table.json"
 
 # TODO: replace with pinecone
 database:

@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+
+# Keys
+.env
+
+# Python
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs and test data
+logs/
+tests/
+test-results/
+
+# Build artifacts and data
+build/
+dist/
+*.egg-info
+
+# Secrets and credentials
+.env
+*.env
+credentials*
+.aws/
+*.pem
+*.key
+
+# Documentation
+*.md
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.override.yml

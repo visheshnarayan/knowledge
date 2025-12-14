@@ -1,0 +1,26 @@
+--- Test Case 1 ---
+Timestamp: 2025-10-07 08:20:32
+Question: Who are Mr. and Mrs. Dursley and where do they live?
+Expected Topic(s): Harry Potter series
+Routed Topic(s): Harry Potter series
+Agent Response: **Answer:**  
+Mr. and Mrs. Dursley are pivotal characters in J.K. Rowling’s *Harry Potter* series, serving as Harry Potter’s only living relatives and primary guardians after his parents’ deaths.  
+
+**Who Are They?**  
+- **Vernon Dursley** is Harry’s uncle, a "big, beefy" man characterized by his disdain for anything unconventional or magical.  
+- **Petunia Dursley** (née Evans) is Harry’s aunt and the older sister of his mother, Lily Potter. Described as thin with a notably long neck, Petunia harbors deep resentment toward her sister’s magical heritage, which shapes her hostility toward Harry.  
+- The couple epitomize narrow-minded, status-obsessed Muggles (non-magical people), prioritizing conformity and their spoiled son, **Dudley Dursley**, while subjecting Harry to neglect and emotional abuse.  
+
+**Where Do They Live?**  
+The Dursleys reside at **Number 4 Privet Drive**, a meticulously maintained suburban home in **Little Whinging**, a fictional town in Surrey, England. This setting symbolizes their obsession with normalcy and serves as Harry’s oppressive childhood home until he leaves for Hogwarts.  
+
+**Role in the Story**  
+Their home becomes a refuge of sorts due to protective magic tied to Harry’s blood relation to Petunia, though their cruelty highlights the contrast between the mundane Muggle world and the magical realm. Their disdain for magic and mistreatment of Harry underscore themes of intolerance and the resilience found in chosen family.  
+
+This synthesis integrates their identities, residence, and narrative significance, reflecting their critical role in Harry’s early life and the series’ broader themes.
+--------------------------------------------------
+
+--- Test Case 2 ---
+Timestamp: 2025-10-07 08:20:46
+Question: Describe the architecture of an agentic graph management system.
+Expected Topic(s): Agentic Graph Management

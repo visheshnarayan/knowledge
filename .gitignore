@@ -1,7 +1,28 @@
+# Virtual Environment
+.venv/
 /.venv
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Ruff cache
+.ruff_cache/
+
+# Logs
 *.log
+logs/
+
+# Build artifacts and output
+data/builds/
 data/output/
+*.html
+*.pkl
+org_table.json
+
+# Test results
+tests/results/
+
+# Secrets
 my_secrets.py
 .env

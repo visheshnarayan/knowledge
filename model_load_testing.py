@@ -5,5 +5,6 @@
 # print(pipe("Hello, how are you?", max_new_tokens=50))
 
 import lmstudio as lms
+
 model = lms.llm()
 print(model.respond("What is the meaning of life?"))

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Graph Agents</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
     <style>
         body {
             font-family: sans-serif;
@@ -167,13 +168,26 @@
                     responseContainer.innerHTML = `<p><strong>Error:</strong> ${data.error}</p>`;
                     sourcesContainer.innerHTML = '<p>No sources available due to error.</p>';
                 } else {
-                    let responseHtml = `<p><strong>Routed Topic:</strong> ${data.routed_topic || 'N/A'}</p>`; // Display routed topic
-                    responseHtml += `<p>${data.response}</p>`;
+                    const converter = new showdown.Converter();
+                    let responseHtml = '';
+                    if (data.routed_topic) {
+                        const topics = data.routed_topic.split(', ');
+                        if (topics.length > 1) {
+                            responseHtml += `<p><strong>I've broken your question down and routed it to ${topics.length} specialists:</strong> ${data.routed_topic}</p><hr>`;
+                        } else {
+                            responseHtml += `<p><strong>Routed to specialist:</strong> ${data.routed_topic}</p><hr>`;
+                        }
+                    }
+                    const responseMarkdown = data.response;
+                    responseHtml += converter.makeHtml(responseMarkdown);
                     responseContainer.innerHTML = responseHtml;
 
                     // Display sources
                     if (data.sources && data.sources.length > 0) {
-                        sourcesContainer.innerHTML = data.sources.map((source, index) => `<h4>Source ${index + 1}:</h4><p>${source}</p>`).join('<hr>');
+                        sourcesContainer.innerHTML = data.sources.map((source, index) => {
+                            const sourceHtml = converter.makeHtml(source);
+                            return `<h4>Source ${index + 1}:</h4><div>${sourceHtml}</div>`
+                        }).join('<hr>');
                     } else {
                         sourcesContainer.innerHTML = '<p>No specific sources found for this query.</p>';
                     }

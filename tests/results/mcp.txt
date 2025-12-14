@@ -1,0 +1,121 @@
+2025-09-18 22:17:02,680 - src.app - INFO - Request received for index page.
+127.0.0.1 - - [18/Sep/2025 22:17:02] "GET / HTTP/1.1" 200 -
+2025-09-18 22:17:02,779 - src.app - INFO - Request received for triplets graph visualization.
+127.0.0.1 - - [18/Sep/2025 22:17:02] "GET /graph/triplets HTTP/1.1" 200 -
+127.0.0.1 - - [18/Sep/2025 22:17:03] "GET /favicon.ico HTTP/1.1" 404 -
+2025-09-18 22:17:06,340 - src.app - INFO - Request received for cosine graph visualization.
+127.0.0.1 - - [18/Sep/2025 22:17:06] "GET /graph/cosine HTTP/1.1" 200 -
+2025-09-18 22:17:21,190 - src.app - INFO - Request received for query.
+2025-09-18 22:17:21,191 - src.app - INFO - Querying parent agent with question: 'who is harry potter'
+2025-09-18 22:17:21,191 - src.parent_agent - INFO - Parent agent received query: 'who is harry potter'
+Okay, let's tackle this query. The user is asking, "who is harry potter." First, I need to figure out what the main question is. The name "Harry Potter" is pretty well-known, but I should check the organizational table to see which agent is best suited.
+
+Looking at the agents, there's one specifically for the Harry Potter series. The description mentions it's about the character's journey and the series by J.K. Rowling. The keywords include Harry Potter, Hogwarts, etc. So the main question here is straightforward. The user wants to know about the character Harry Potter, which is covered under that agent. 
+
+I don't see any other aspects in the question that relate to other topics like natural language processing or hypergraphs. The question is simple and directly relates to the Harry Potter series. So there's no need to decompose it further into sub-questions. Just assign the entire question to the Harry Potter series agent.
+
+
+{"sub_tasks": [{"question": "who is harry potter", "topic": "Harry Potter series"}]}2025-09-18 22:17:43,568 - src.parent_agent - INFO - Forwarding sub-query to child agent for topic: 'Harry Potter series'
+2025-09-18 22:17:43,568 - src.agent - INFO - Querying Strands agent for topic 'Harry Potter series'...
+Harry Potter is the main protagonist of the Harry Potter book and movie series by J.K. Rowling. Here are some key details about him:
+Tool #1: consult_expert_tool
+2025-09-18 22:17:46,464 - src.parent_agent - INFO - Agent is consulting expert on topic 'Harry Potter series' with question: 'Who is Harry Potter?'
+2025-09-18 22:17:46,464 - src.agent - INFO - Querying Strands agent for topic 'Harry Potter series'...
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+        - Avoid using `tokenizers` before the fork if possible
+        - Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+127.0.0.1 - - [18/Sep/2025 22:17:46] "POST /query_agent HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 240, in event_loop_cycle
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 502, in _handle_tool_execution
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 303, in recurse_event_loop
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 196, in event_loop_cycle
+    raise e
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 138, in event_loop_cycle
+    async for event in stream_messages(agent.model, agent.system_prompt, agent.messages, tool_specs):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/streaming.py", line 319, in stream_messages
+    async for event in process_stream(chunks):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/streaming.py", line 276, in process_stream
+    async for chunk in chunks:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/models/bedrock.py", line 397, in stream
+    await task
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/opentelemetry/instrumentation/threading/__init__.py", line 171, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/models/bedrock.py", line 494, in _stream
+    raise e
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/models/bedrock.py", line 431, in _stream
+    response = self.client.converse_stream(**request)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ValidationException: An error occurred (ValidationException) when calling the ConverseStream operation: The number of toolResult blocks at messages.3.content exceeds the number of toolUse blocks of previous turn.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/visheshng/Documents/Research/knowledge/src/app.py", line 62, in query
+    response, sources, routed_topics = parent_agent.query(question)
+  File "/Users/visheshng/Documents/Research/knowledge/src/parent_agent.py", line 112, in query
+    topic, sub_question, response, sources = future.result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/opentelemetry/instrumentation/threading/__init__.py", line 171, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/src/parent_agent.py", line 72, in _query_child_agent
+    response, sources = child_agent.query(question)
+  File "/Users/visheshng/Documents/Research/knowledge/src/agent.py", line 117, in query
+    response = self.agent(question)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 381, in __call__
+    return future.result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/opentelemetry/instrumentation/threading/__init__.py", line 171, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 377, in execute
+    return asyncio.run(self.invoke_async(prompt, **kwargs))
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 402, in invoke_async
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 535, in stream_async
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 571, in _run_loop
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/agent/agent.py", line 610, in _execute_event_loop_cycle
+    async for event in events:
+  File "/Users/visheshng/Documents/Research/knowledge/.venv/lib/python3.10/site-packages/strands/event_loop/event_loop.py", line 271, in event_loop_cycle
+    raise EventLoopException(e, invocation_state["request_state"]) from e
+strands.types.exceptions.EventLoopException: An error occurred (ValidationException) when calling the ConverseStream operation: The number of toolResult blocks at messages.3.content exceeds the number of toolUse blocks of previous turn.

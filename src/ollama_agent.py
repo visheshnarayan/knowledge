@@ -1,4 +1,5 @@
 from openai import OpenAI
+import os
 from src.logger import get_logger
 import torch
 from sklearn.metrics.pairwise import cosine_similarity
@@ -7,7 +8,7 @@ import random
 logger = get_logger(__name__)
 
 
-class LMStudioAgent:
+class OllamaAgent:
     def __init__(
         self,
         subgraph,
@@ -25,13 +26,15 @@ class LMStudioAgent:
         self.search_similarity = search_similarity
         self.search_sample_ratio = search_sample_ratio
         self.llm_config = llm_config
+        # Allow overriding base_url with an environment variable for Docker Compose
+        default_url = self.llm_config.get("base_url", "http://localhost:11434/v1")
+        base_url = os.environ.get("OLLAMA_BASE_URL", default_url)
         self.client = OpenAI(
-            base_url=self.llm_config.get("base_url", "http://localhost:1234/v1"),
-            api_key=self.llm_config.get("api_key", "not-needed"),
+            base_url=base_url, api_key=self.llm_config.get("api_key", "not-needed")
         )
-        self.model = self.llm_config.get("model", "local-model")
+        self.model = self.llm_config.get("model", "mistral")
         logger.info(
-            f"LMStudio agent for topic '{self.topic}' initialized with model {self.model}."
+            f"Ollama agent for topic '{self.topic}' initialized with model {self.model}."
         )
 
     def similarity_search(self, question: str) -> str:
@@ -93,8 +96,12 @@ class LMStudioAgent:
 
         return "\n\n".join(context)
 
-    def query(self, question, context):
-        logger.info(f"Querying LMStudio agent for topic '{self.topic}'...")
+    def query(self, question, context=None):
+        logger.info(f"Querying Ollama agent for topic '{self.topic}'...")
+
+        if context is None:
+            logger.info("Context not provided, performing internal similarity search.")
+            context = self.similarity_search(question)
 
         system_prompt = f"""You are a helpful assistant for the topic '{self.topic}'. 
         Answer the question based on the provided context.
@@ -113,9 +120,11 @@ class LMStudioAgent:
             )
             response = completion.choices[0].message.content
             logger.info(
-                f"Received response from LMStudio agent for topic '{self.topic}'."
+                f"Received response from Ollama agent for topic '{self.topic}'."
             )
-            return response, context
+            # The parent agent expects sources as the second return value.
+            # For OllamaAgent, the context is the source.
+            return response, [context]
         except Exception as e:
-            logger.error(f"Error during text generation with LMStudio: {e}")
-            return "Error: Could not generate text.", ""
+            logger.error(f"Error during text generation with Ollama: {e}")
+            return "Error: Could not generate text.", []

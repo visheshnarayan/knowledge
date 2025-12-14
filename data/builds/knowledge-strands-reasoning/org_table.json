@@ -1,0 +1,51 @@
+{
+    "Agentic Graph Management": {
+        "description": "Proactive, intelligent management of graphs for efficient and scalable purposes.",
+        "keywords": [
+            "AI agents",
+            "Graph Management",
+            "Graph Visualization",
+            "Smart Agents",
+            "Knowledge Graph Management"
+        ]
+    },
+    "hypergraph structures": {
+        "description": "A generalization of graphs where edges, called hyperedges, can connect any number of vertices.",
+        "keywords": [
+            "hyperedges",
+            "nodes",
+            "structure",
+            "directed hyperedges"
+        ]
+    },
+    "natural language processing": {
+        "description": "Computers processing human language (text or speech) through understanding, generation, and translation.",
+        "keywords": [
+            "nlp",
+            "parsing",
+            "named entity recognition",
+            "machine translation",
+            "word embedding"
+        ]
+    },
+    "autonomous agents": {
+        "description": "Computational systems that can act independently and autonomously to pursue goals and exhibit emergent behavior.",
+        "keywords": [
+            "Autonomous Agents",
+            "Autonomous systems",
+            "Autonomous decision making",
+            "Multi-agent systems",
+            "Artificial intelligence"
+        ]
+    },
+    "Harry Potter series": {
+        "description": "A young boy who discovers he is a wizard and attends a magical school, learning about his destiny to battle dark forces and grow up.",
+        "keywords": [
+            "Harry Potter",
+            "Wizarding World",
+            "Hogwarts School of Witchcraft and Wizardry",
+            "dueling wands",
+            "Horcruxes"
+        ]
+    }
+}

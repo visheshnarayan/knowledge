@@ -1,0 +1,51 @@
+# Docker Compose file for running the Agentic Knowledge Graph application
+# with a dedicated Ollama container.
+#
+# Usage:
+# 1. (One-time setup) Pull your desired model: `ollama pull deepseek-coder`
+# 2. Run the application: `docker-compose up --build`
+# 3. Access the web UI at http://localhost:5001
+# 4. To stop: `docker-compose down`
+
+version: '3.8'
+
+services:
+  # The Python application service
+  app:
+    build: .
+    stdin_open: true # keeps stdin open for the CLI
+    tty: true # allocates a TTY for the CLI
+    ports:
+      - "5001:5000"
+    environment:
+      # Tells the application to use the Ollama workflow
+      - LLM_INFRA_TYPE=ollama
+      # Tells the app where to find the Ollama service within Docker's network
+      - OLLAMA_BASE_URL=http://ollama:11434/v1
+    volumes:
+      # Mounts the local source code into the container.
+      # Changes you make to the code will be reflected without needing to rebuild the image.
+      - .:/app
+      # Mount a volume to cache the downloaded Hugging Face models
+      - huggingface_cache:/root/.cache/huggingface
+    depends_on:
+      # Ensures the Ollama service is started before the app service
+      - ollama
+
+  # The Ollama service
+  ollama:
+    image: ollama/ollama
+    ports:
+      # Exposes the Ollama API to your host machine for debugging or other tools
+      - "11434:11434"
+    volumes:
+      # Persists the downloaded Ollama models on your host machine
+      - ollama_data:/root/.ollama
+
+volumes:
+  # Defines a named volume to store the Ollama models
+  ollama_data:
+    name: knowledge_ollama_data
+  # Defines a named volume to store the Hugging Face model cache
+  huggingface_cache:
+    name: knowledge_hf_cache
